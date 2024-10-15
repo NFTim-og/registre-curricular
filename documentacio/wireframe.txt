@@ -1,0 +1,19 @@
+Hem de crear una aplicació modular pensada per professors per avaluar les competències que ensenyen als alumnes. 
+Ha de tenir un login amb contrasenya. 
+Hi ha d'haver-hi un admin master que pugui modificar les Situacions d’Aprenentatge (SdA) en cas de que una actualització sigui necessària. 
+El Cap d’Estudis de cada centre podrà assignar professors als cursos i classes que els hi corresponen, i podrà veure el progrés de cada professor en cada àmbit. 
+Cada professor tindrà acces els seus cursos amb les diferents classes que li pertoquen.
+
+Passos que seguira els professors al entrar en la app:
+
+Professor entra a la app (dintre de la app hi ha un menu lateral amb els següents punts):
+Visió General (on hi ha el resum amb gràfics on es pot veure el progres de les competències d'un mateix curs.)
+Els meus Cursos (on hi ha els cursos que el professor dóna classes)(amb una fletxa cap a baix estil desplegable)
+    Un cop cliques als cursos et surt els cursos que dóna aquest professor [ 1er curs i 2on, 3er curs i 4rt i 5è i 6è curs]
+    Quan cliques un dels cursos et surten les diferents SdAs d’aquell curs i l'opció d’afegir-ne
+Situacions d’Aprenentatge Compartides (SdA compartides entre professors) (pendent)
+Configuració (pendent)
+
+La primera pàgina que veu es la del resum del progres que porta durant el curs (a aquesta pàgina hi hauria d'haver gràfics amb el progrés de les competències assolides i no assolides)
+El menú desplegable de “Els meus Cursos” li dóna l'opció de triar un curs, i veure les SdA dintre d’aquell curs, i afegir-ne si ho desitja amb un botó com es fa a Github amb els repositoris quan vols crear un nou repositori.
+També hi ha una barra de recerca per trobar una SdA que s’ha fet anteriorment per facilitar la cerca.
