@@ -1,0 +1,27 @@
+PRODUCT BACKLOG
+
+Objectius del projecte: crear una aplicació en Angular per gestionar les situacions d’aprenentatge d’un centre educatiu.
+
+Funcionalitats Clau
+
+Creació d’usuaris siguent administrador (alta, baixa, modificació).
+Login/Logout
+Navegació de les SdA i que estigui organitzat en els diferents cursos.
+Gestió de situacions d’aprenentatge (afegir, editar, eliminar).
+Visualització de les situacions d'aprenentatge en forma de llista o taula i poder-hi navegar ràpidament.
+Creació d’un menú per poder navegar entre les funcionalitats.
+Una funcionalitat de configuració per poder editar coses bàsiques sobre la interfície (mode clar o fosc, llenguatge de l’aplicació)
+Funcionalitat per poder compartir les SdA i que es pugui editar entre professors.
+Una visió general per veure el progrés general del curs.
+
+Històries d’usuari
+
+Com a administrador, vull poder crear, modificar i eliminar usuaris per els professors.
+Com a usuari, vull poder iniciar i tancar la sessió per poder accedir a l'aplicació.
+Com a usuari, vull poder navegar per les situacions d'aprenentatge (SdA) organitzades per cursos per trobar fàcilment el contingut rellevant.
+Com a professor, vull poder afegir, editar i eliminar situacions d'aprenentatge per gestionar el contingut educatiu que ofereixo.
+Com a usuari, vull poder veure les situacions d'aprenentatge en una llista o taula i navegar ràpidament per trobar el que busco.
+Com a usuari, vull tenir un menú que em permet navegar fàcilment per les diferents funcionalitats del sistema.
+Com a usuari, vull poder configurar la interfície de l'aplicació per ajustar-la a les meves preferències, com el mode clar o fosc i l'idioma.
+Com a professor, vull poder compartir les meves SdA amb altres professors perquè les puguin editar conjuntament.
+Com a professor, vull poder veure una visió general del progrés de cada curs per fer un seguiment del rendiment dels meus alumnes.
