@@ -1,0 +1,15 @@
+﻿To-do: "Els professors han de poder marcar els aprenentatges per a tenir un seguiment de què s’ha treballat."
+
+
+* Creation of the database to hold all the content of the SdA
+* Creation of the routing
+* Creation of  the service to connect the app with the database
+* Creation of the service to interact with the database (endpoints)
+* Creation and the implementation of the component SdABasicInfo
+* Creation and the implementation of the component SdAVector
+* Creation and the implementation of the component SdACompetences
+* Creation and the implementation of the component SdASabers
+* Creation of the service to make the database interactive through the app (the general logic)
+
+
+Obviously using the methodology of TDD and committing all the work done in the github.
