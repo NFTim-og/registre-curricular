@@ -20,4 +20,11 @@ describe('SdaBasicInfoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display the title', () => {
+    component.title = 'Situacio de aprenentatge 1';
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h2')?.textContent).toContain('Situacio de aprenentatge 1');
+  })
 });

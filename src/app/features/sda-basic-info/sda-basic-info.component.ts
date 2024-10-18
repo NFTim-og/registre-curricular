@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sda-basic-info',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './sda-basic-info.component.css'
 })
 export class SdaBasicInfoComponent {
-
+  @Input() title: string = '';
 }
