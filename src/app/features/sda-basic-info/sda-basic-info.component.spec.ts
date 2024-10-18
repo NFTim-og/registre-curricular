@@ -34,4 +34,12 @@ describe('SdaBasicInfoComponent', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('p')?.textContent).toContain('Description of the SdA 1');
   })
+
+  it('should have an url', () => {
+    component.url = 'http://example.com'
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    const link = compiled.querySelector('a');
+    expect(link.href).toContain('https:example.com');
+  })
 });
