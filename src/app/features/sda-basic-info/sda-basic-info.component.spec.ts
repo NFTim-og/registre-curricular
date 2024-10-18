@@ -40,6 +40,6 @@ describe('SdaBasicInfoComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     const link = compiled.querySelector('a');
-    expect(link.href).toContain('https:example.com');
+    expect(link.href).toContain('http://example.com');
   })
 });
