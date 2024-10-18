@@ -11,4 +11,5 @@ export class SdaBasicInfoComponent {
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() url: string = '';
+  @Input() logoUrl: string = '';
 }

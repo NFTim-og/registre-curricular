@@ -1,5 +1,8 @@
 <div class="sda-basic-info">
-    <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
-    <a [href]="url" target="_blank">Más información</a>
+    <img [src]="logoUrl" alt="Logo" class="sda-logo" />
+    <div class="sda-content">
+        <h2>{{ title }}</h2>
+        <p>{{ description }}</p>
+        <a [href]="url" target="_blank">Más información</a>
+    </div>
 </div>

@@ -44,7 +44,7 @@ describe('SdaBasicInfoComponent', () => {
   })
 
   it('should display the img of the given url', () => {
-    component.logourl = 'https://example.com/logo.png';
+    component.logoUrl = 'https://example.com/logo.png';
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     const img = compiled.querySelector('img');
