@@ -36,10 +36,18 @@ describe('SdaBasicInfoComponent', () => {
   })
 
   it('should have an url', () => {
-    component.url = 'http://example.com'
+    component.url = 'https://example.com'
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     const link = compiled.querySelector('a');
-    expect(link.href).toContain('http://example.com');
+    expect(link.href).toContain('https://example.com');
+  })
+
+  it('should display the img of the given url', () => {
+    component.logourl = 'https://example.com/logo.png';
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    const img = compiled.querySelector('img');
+    expect(img.src).toContain('https://example.com/logo.png');
   })
 });

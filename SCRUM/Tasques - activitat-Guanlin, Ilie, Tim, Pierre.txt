@@ -1,6 +1,5 @@
 ﻿To-do: "Els professors han de poder marcar els aprenentatges per a tenir un seguiment de què s’ha treballat."
 
-
 * Creation of the database to hold all the content of the SdA
 * Creation of the routing
 * Creation of  the service to connect the app with the database
