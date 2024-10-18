@@ -22,9 +22,16 @@ describe('SdaBasicInfoComponent', () => {
   });
 
   it('should display the title', () => {
-    component.title = 'Situacio de aprenentatge 1';
+    component.title = 'SdA 1';
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h2')?.textContent).toContain('Situacio de aprenentatge 1');
+    expect(compiled.querySelector('h2')?.textContent).toContain('SdA 1');
+  })
+
+  it('should display the description', () => {
+    component.description = 'Description of the SdA 1';
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('p')?.textContent).toContain('Description of the SdA 1');
   })
 });
