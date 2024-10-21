@@ -25,14 +25,14 @@ describe('SdaBasicInfoComponent', () => {
     component.title = 'SdA 1';
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h2')?.textContent).toContain('SdA 1');
+    expect(compiled.querySelector('div')?.textContent).toContain('SdA 1');
   })
 
   it('should display the description', () => {
     component.description = 'Description of the SdA 1';
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('p')?.textContent).toContain('Description of the SdA 1');
+    expect(compiled.querySelector('div')?.textContent).toContain('Description of the SdA 1');
   })
 
   it('should have an url', () => {

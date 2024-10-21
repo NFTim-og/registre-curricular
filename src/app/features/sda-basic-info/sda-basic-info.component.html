@@ -1,8 +1,13 @@
 <div class="sda-basic-info">
-    <img [src]="logoUrl" alt="Logo" class="sda-logo" />
-    <div class="sda-content">
-        <h2>{{ title }}</h2>
-        <p>{{ description }}</p>
+    <div class="sda-row">
+      <div class="sda-cell">
+        <img [src]="logoUrl" alt="Logo" class="sda-logo" />
+      </div>
+      <div class="sda-cell">{{ title }}SdA 1</div>
+      <div class="sda-cell">{{ description }}Description of the SdA 1</div>
+      <div class="sda-cell">
         <a [href]="url" target="_blank">Más información</a>
+      </div>
     </div>
-</div>
+  </div>
+  

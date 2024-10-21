@@ -1,0 +1,23 @@
+.sda-basic-info {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sda-row {
+    display: table-row;
+  }
+  
+  .sda-cell {
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .sda-logo {
+    width: 10px;
+    height: 10px;
+    object-fit: cover;
+  }
+  
