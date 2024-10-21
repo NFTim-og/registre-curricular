@@ -1,14 +1,24 @@
 ﻿To-do: "Els professors han de poder marcar els aprenentatges per a tenir un seguiment de què s’ha treballat."
 
-* Creation of the database to hold all the content of the SdA
-* Creation of the routing
+database part:
 * Creation of  the service to connect the app with the database
+* Creation of the database to hold all the content of the SdA
 * Creation of the service to interact with the database (endpoints)
-* Creation and the implementation of the component SdABasicInfo
-* Creation and the implementation of the component SdAVector
-* Creation and the implementation of the component SdACompetences
-* Creation and the implementation of the component SdASabers
 * Creation of the service to make the database interactive through the app (the general logic)
+
+routing part:
+creation of the main frame, the top bar and the side bar for navigation
+* Creation of the routing
+    * Creation of the functionality of my courses with the diferent courses
+    * Creation of the display of the SdAs of each courses (with the edit and delete button, maybe the share button)
+    
+
+component part:
+* Creation and the implementation of the component SdABasicInfo (it just display the basic information of the SdA,
+  such as the name, description, url and logo) --DONE--
+* Creation and the implementation of the component SdAVector (it just display the Vector table)
+* Creation and the implementation of the component SdACompetences (it just display the competences table)
+* Creation and the implementation of the component SdASabers (it just display the sabers table)
 
 
 Obviously using the methodology of TDD and committing all the work done in the github.
