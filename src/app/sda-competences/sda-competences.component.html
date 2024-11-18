@@ -1,8 +1,11 @@
-<div *ngFor="let competence of competences" class="competence">
+<div *ngFor="let competence of competences">
     <h3>{{ competence.description }}</h3>
     <ul>
-      <li *ngFor="let critere of competence.criteres">
-        <strong>{{ critere.id }}:</strong> {{ critere.description }}
+      <li *ngFor="let criteri of competence.criteres">
+        <label>
+          <input type="checkbox" [id]="criteri.id" />
+          {{ criteri.description }}
+        </label>
       </li>
     </ul>
   </div>
