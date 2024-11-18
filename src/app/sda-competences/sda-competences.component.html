@@ -1,0 +1,9 @@
+<div *ngFor="let competence of competences" class="competence">
+    <h3>{{ competence.description }}</h3>
+    <ul>
+      <li *ngFor="let critere of competence.criteres">
+        <strong>{{ critere.id }}:</strong> {{ critere.description }}
+      </li>
+    </ul>
+  </div>
+  
