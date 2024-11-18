@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SideNavigationBarComponent } from './side-navigation-bar.component';
+import { By } from '@angular/platform-browser';
 
 describe('SideNavigationBarComponent', () => {
   let component: SideNavigationBarComponent;
@@ -20,4 +21,10 @@ describe('SideNavigationBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display the title "EduApp"', () => {
+    const title = fixture.debugElement.query(By.css('.title')).nativeElement;
+    expect(title.textContent).toContain('EduApp');
+  });
+  
 });
