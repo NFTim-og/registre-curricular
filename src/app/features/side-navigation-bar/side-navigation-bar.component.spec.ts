@@ -27,4 +27,9 @@ describe('SideNavigationBarComponent', () => {
     expect(title.textContent).toContain('EduApp');
   });
   
+  it('should display the "Els meus Cursos" section', () => {
+    const section = fixture.debugElement.query(By.css('.courses')).nativeElement;
+    expect(section.textContent).toContain('Els meus Cursos');
+  });
+  
 });
