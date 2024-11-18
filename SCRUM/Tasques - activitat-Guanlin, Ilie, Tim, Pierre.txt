@@ -1,8 +1,9 @@
 ﻿To-do: "Els professors han de poder marcar els aprenentatges per a tenir un seguiment de què s’ha treballat."
 
 database part:
-* Creation of  the service to connect the app with the database
 * Creation of the database to hold all the content of the SdA
+* Implement all the content of the SdA to the database
+* Creation of  the service to connect the app with the database
 * Creation of the service to interact with the database (endpoints)
 * Creation of the service to make the database interactive through the app (the general logic)
 
