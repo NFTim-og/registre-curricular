@@ -20,4 +20,9 @@ export class SdaVectorsComponent {
     const checkbox = event.target as HTMLInputElement;
     this.vectors[index].mark = checkbox.checked;
   }
+
+  completePercentage(): number {
+    const marcats = this.vectors.filter((vector) => vector.mark).length;
+    return Math.round((marcats / this.vectors.length) * 100);
+  }
 }
