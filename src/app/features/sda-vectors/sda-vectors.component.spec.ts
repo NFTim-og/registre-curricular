@@ -24,5 +24,11 @@ describe('VectorsChecklistComponent', () => {
     component.updateVector(0, { target: { checked: true } } as any);
     expect(component.vectors[0].mark).toBeTrue();
   });
+
+  it('It should correctly calculate the percentage after marking vectors', () => {
+    component.updateVector(0, { target: { checked: true } } as any);
+    component.updateVector(1, { target: { checked: true } } as any);
+    expect(component.completePercentage()).toBe(33);
+  });
 });
 
