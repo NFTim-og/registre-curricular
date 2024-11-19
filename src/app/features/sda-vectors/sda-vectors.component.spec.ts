@@ -49,5 +49,15 @@ describe('VectorsChecklistComponent', () => {
   
     expect(progressBar.style.width).toBe(`${percentage}%`);
   });
+
+  it('It should display the correct number of checked vectors', () => {
+    component.updateVector(0, { target: { checked: true } } as any);
+    component.updateVector(1, { target: { checked: true } } as any);
+  
+    fixture.detectChanges();
+    const marcatsText = fixture.nativeElement.querySelector('p').textContent;
+  
+    expect(marcatsText).toBe('2 / 6');
+  });
 });
 
