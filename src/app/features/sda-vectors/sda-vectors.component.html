@@ -1,1 +1,24 @@
-<p>sda-vectors works!</p>
+<div class="vectors-container">
+    <h3>
+      VECTORS
+      <span>{{ completePercentage() }}%</span>
+    </h3>
+    <div class="progress-bar">
+      <div
+        class="progress"
+        [style.width]="completePercentage() + '%'"
+      ></div>
+    </div>
+    <p>{{ markedVectors() }} / {{ vectors.length }}</p>
+    <ul>
+      <li *ngFor="let vector of vectors; let i = index">
+        <input
+          type="checkbox"
+          [checked]="vector.mark"
+          (change)="updateVector(i, $event)"
+        />
+        <label>{{ vector.name }}</label>
+      </li>
+    </ul>
+  </div>
+  
