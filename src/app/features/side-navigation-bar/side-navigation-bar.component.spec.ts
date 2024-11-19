@@ -26,6 +26,11 @@ describe('SideNavigationBarComponent', () => {
     const title = fixture.debugElement.query(By.css('.title')).nativeElement;
     expect(title.textContent).toContain('EduApp');
   });
+
+  it('should display the "Visió General" section', () => {
+    const section = fixture.debugElement.query(By.css('.general')).nativeElement;
+    expect(section.textContent).toContain('Visió General');
+  });  
   
   it('should display the "Els meus Cursos" section', () => {
     const section = fixture.debugElement.query(By.css('.courses-toggle')).nativeElement;
