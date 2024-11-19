@@ -37,5 +37,17 @@ describe('VectorsChecklistComponent', () => {
     component.updateVector(1, { target: { checked: false } } as any);
     expect(component.completePercentage()).toBe(17);
   });
+
+  it('It should show the progress bar with the correct width according to the percentage', () => {
+    component.updateVector(0, { target: { checked: true } } as any);
+    component.updateVector(1, { target: { checked: true } } as any);
+  
+    const percentage = component.completePercentage();
+    const progressBar = fixture.nativeElement.querySelector('.progress');
+  
+    fixture.detectChanges();
+  
+    expect(progressBar.style.width).toBe(`${percentage}%`);
+  });
 });
 
