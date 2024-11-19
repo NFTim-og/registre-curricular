@@ -32,4 +32,18 @@ describe('SideNavigationBarComponent', () => {
     expect(section.textContent).toContain('Els meus Cursos');
   });
   
+  it('should toggle subsections when "Els meus Cursos" is clicked', () => {
+    const toggleButton = fixture.debugElement.query(By.css('.courses-toggle'));
+    toggleButton.triggerEventHandler('click', null); 
+    fixture.detectChanges();
+  
+    const subsections = fixture.debugElement.query(By.css('.subsections'));
+    expect(subsections).toBeTruthy(); 
+
+    toggleButton.triggerEventHandler('click', null);
+    fixture.detectChanges();
+  
+    const hiddenSubsections = fixture.debugElement.query(By.css('.subsections'));
+    expect(hiddenSubsections).toBeFalsy();
+  });
 });
