@@ -57,4 +57,9 @@ describe('SideNavigationBarComponent', () => {
     expect(section.textContent).toContain('SdAs Compartides');
   });
   
+  it('should display the "Configuració" section', () => {
+    const section = fixture.debugElement.query(By.css('.settings')).nativeElement;
+    expect(section.textContent).toContain('Configuració');
+  });
+  
 });
