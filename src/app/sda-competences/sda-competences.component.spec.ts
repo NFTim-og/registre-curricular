@@ -109,4 +109,25 @@ describe('SdACompetencesComponent', () => {
     // Verifica que el checkbox no està marcat
     expect(checkbox.checked).toBeFalse();
   });
+
+  it('should update progress bar when checkboxes are clicked', () => {
+    const firstCriteriCheckbox = fixture.debugElement.query(
+      By.css(`input[type="checkbox"][id="1.1"]`)
+    ).nativeElement;
+    const progressBar = fixture.debugElement.query(
+      By.css('#progress-bar')
+    ).nativeElement;
+  
+    // Vérifier la progression initiale
+    expect(component.progress).toBe(0);
+    expect(progressBar.value).toBe(0);
+  
+    // Simuler un clic sur un checkbox
+    firstCriteriCheckbox.click();
+    fixture.detectChanges();
+  
+    // Vérifier que la progression a augmenté
+    expect(component.progress).toBeGreaterThan(0);
+    expect(progressBar.value).toBe(component.progress);
+  });
 });

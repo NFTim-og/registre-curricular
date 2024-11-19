@@ -3,10 +3,18 @@
     <ul>
       <li *ngFor="let criteri of competence.criteres">
         <label>
-          <input type="checkbox" [id]="criteri.id" />
+          <input 
+            type="checkbox" 
+            [id]="criteri.id" 
+            (change)="onCheckboxChange($event)" />
           {{ criteri.description }}
         </label>
       </li>
     </ul>
+  </div>
+  
+  <div class="progress-bar-container">
+    <label for="progress-bar">Progression :</label>
+    <progress id="progress-bar" [value]="progress" max="100"></progress>
   </div>
   
