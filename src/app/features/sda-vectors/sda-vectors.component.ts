@@ -15,4 +15,9 @@ export class SdaVectorsComponent {
     { name: 'Universalitat del currículum', mark: false },
     { name: 'Ciutadania democràtica i consciència global', mark: false },
   ];
+
+  updateVector(index: number, event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    this.vectors[index].mark = checkbox.checked;
+  }
 }
