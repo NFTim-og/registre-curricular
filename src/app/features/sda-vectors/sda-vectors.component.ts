@@ -25,4 +25,8 @@ export class SdaVectorsComponent {
     const marcats = this.vectors.filter((vector) => vector.mark).length;
     return Math.round((marcats / this.vectors.length) * 100);
   }
+
+  markedVectors(): number {
+    return this.vectors.filter((vector) => vector.mark).length;
+  }
 }
