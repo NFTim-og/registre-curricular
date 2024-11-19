@@ -1,37 +1,36 @@
-<div *ngFor="let competence of competences">
+<div *ngFor="let competence of competences; let i = index">
     <h3>{{ competence.description }}</h3>
     <ul>
-      <li *ngFor="let criteri of competence.criteres">
+      <li *ngFor="let criteri of competence.criteres; let j = index">
         <label>
-          <input 
-            type="checkbox" 
-            [id]="criteri.id" 
-            (change)="onCheckboxChange($event)" />
+          <input
+            type="checkbox"
+            [id]="criteri.id"
+            (change)="onCheckboxChange($event, i, j)"
+            [checked]="criteri.checked"
+          />
           {{ criteri.description }}
         </label>
       </li>
     </ul>
-  </div>
   
-  <div class="progress-bar-container">
-    <label for="progress-bar">Progression :</label>
-    
-    
-    <div style="position: relative; width: 100%; display: inline-block;">
-      
-      <progress 
-        id="progress-bar" 
-        [value]="progress" 
-        max="100" 
-        style="width: 100%; height: 20px;">
-      </progress>
-      
-      
-      <div 
-        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; color: black;">
-        {{ progress }}%
-      </div>
+    <label>
+      <input 
+        type="checkbox" 
+        [id]="'competence-checkbox-' + i"
+        [checked]="competence.competenceChecked"
+        disabled
+      />
+      Competència completada
+    </label>
+  
+    <div class="progress-bar-container">
+      <label for="progress-bar">Progression:</label>
+      <progress
+        id="progress-bar"
+        [value]="competence.progress"
+        max="100"
+      ></progress>
     </div>
   </div>
-  
   

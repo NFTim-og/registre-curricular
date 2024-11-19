@@ -21,9 +21,19 @@ export class SdACompetencesComponent {
 
   private completedCriteres = 0;
 
-  onCheckboxChange(event: Event): void {
+  onCheckboxChange(event: Event, competenceIndex: number, criteriIndex: number): void {
     const checkbox = event.target as HTMLInputElement;
-    this.completedCriteres += checkbox.checked ? 1 : -1;
-    this.progress = Math.round((this.completedCriteres / this.totalCriteres) * 100);
+  
+    // Actualitzem l'estat del criteri
+    this.competences[competenceIndex].criteres[criteriIndex].checked = checkbox.checked;
+  
+    // Comprovem si almenys un criteri de la competència està marcat
+    const competence = this.competences[competenceIndex];
+    competence.competenceChecked = competence.criteres.some(criteri => criteri.checked);
+  
+    // Actualitzem el progrés de la competència
+    const completedCriteres = competence.criteres.filter(criteri => criteri.checked).length;
+    competence.progress = Math.round((completedCriteres / competence.criteres.length) * 100);
   }
+  
 }

@@ -98,18 +98,30 @@ describe('SdACompetencesComponent', () => {
       By.css(`input[type="checkbox"][id="1.1"]`)
     ).nativeElement;
     const progressBar = fixture.debugElement.query(
-      By.css('#progress-bar')
+      By.css(`#progress-bar`)
     ).nativeElement;
   
-    expect(component.progress).toBe(0);
+    // Verifiquem que el progrés inicial sigui 0 per la competència
+    expect(component.competences[0].progress).toBe(0);
     expect(progressBar.value).toBe(0);
   
+    // Fem clic a la casella per marcar-la
     firstCriteriCheckbox.click();
-    fixture.detectChanges();
+    fixture.detectChanges(); // Actualitzem la vista
   
-    expect(component.progress).toBeGreaterThan(0);
-    expect(progressBar.value).toBe(component.progress);
+    // Verifiquem que el progrés ha augmentat després de fer clic
+    expect(component.competences[0].progress).toBeGreaterThan(0);
+    expect(progressBar.value).toBe(component.competences[0].progress);
+  
+    // Tornem a fer clic per desmarcar la casella
+    firstCriteriCheckbox.click();
+    fixture.detectChanges(); // Actualitzem la vista
+  
+    // Verifiquem que el progrés torni a 0
+    expect(component.competences[0].progress).toBe(0);
+    expect(progressBar.value).toBe(component.competences[0].progress);
   });
+  
   
   it('should check competence checkbox when at least one criteri is checked', () => {
     const firstCriteri = component.competences[0].criteres[0];
