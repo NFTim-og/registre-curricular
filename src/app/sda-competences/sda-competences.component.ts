@@ -12,28 +12,24 @@ import competencesData from '../../assets/competences.json';
 export class SdACompetencesComponent {
   competences = competencesData.competences;
 
+  // Progression initiale
   progress = 0;
 
+  // Total de critères
   private totalCriteres = this.competences.reduce(
     (sum, competence) => sum + competence.criteres.length,
     0
   );
 
+  // Nombre de critères cochés
   private completedCriteres = 0;
 
-  onCheckboxChange(event: Event, competenceIndex: number, criteriIndex: number): void {
+  // Gestion des changements de checkbox
+  onCheckboxChange(event: Event): void {
     const checkbox = event.target as HTMLInputElement;
-  
-    // Actualitzem l'estat del criteri
-    this.competences[competenceIndex].criteres[criteriIndex].checked = checkbox.checked;
-  
-    // Comprovem si almenys un criteri de la competència està marcat
-    const competence = this.competences[competenceIndex];
-    competence.competenceChecked = competence.criteres.some(criteri => criteri.checked);
-  
-    // Actualitzem el progrés de la competència
-    const completedCriteres = competence.criteres.filter(criteri => criteri.checked).length;
-    competence.progress = Math.round((completedCriteres / competence.criteres.length) * 100);
+    this.completedCriteres += checkbox.checked ? 1 : -1;
+
+    // Calculer la progression en pourcentage
+    this.progress = Math.round((this.completedCriteres / this.totalCriteres) * 100);
   }
-  
 }
