@@ -9,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './side-navigation-bar.component.css'
 })
 export class SideNavigationBarComponent {
+  isCoursesExpanded = false;
 
+  toggleCourses() {
+    this.isCoursesExpanded = !this.isCoursesExpanded;
+  }
 }
