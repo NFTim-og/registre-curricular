@@ -46,4 +46,10 @@ describe('SideNavigationBarComponent', () => {
     const hiddenSubsections = fixture.debugElement.query(By.css('.subsections'));
     expect(hiddenSubsections).toBeFalsy();
   });
+
+  it('should display the "SdAs Compartides" section', () => {
+    const section = fixture.debugElement.query(By.css('.shared')).nativeElement;
+    expect(section.textContent).toContain('SdAs Compartides');
+  });
+  
 });
