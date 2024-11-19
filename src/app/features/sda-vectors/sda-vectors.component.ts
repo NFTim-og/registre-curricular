@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 })
 export class SdaVectorsComponent {
   vectors = [
-    { nom: 'Aprenentatges competencials', marca: false },
-    { nom: 'Perspectiva de gènere', marca: false },
-    { nom: "Qualitat de l'educació de les llengües", marca: false },
-    { nom: 'Benestar emocional', marca: false },
-    { nom: 'Universalitat del currículum', marca: false },
-    { nom: 'Ciutadania democràtica i consciència global', marca: false },
+    { name: 'Aprenentatges competencials', mark: false },
+    { name: 'Perspectiva de gènere', mark: false },
+    { name: "Qualitat de l'educació de les llengües", mark: false },
+    { name: 'Benestar emocional', mark: false },
+    { name: 'Universalitat del currículum', mark: false },
+    { name: 'Ciutadania democràtica i consciència global', mark: false },
   ];
 }

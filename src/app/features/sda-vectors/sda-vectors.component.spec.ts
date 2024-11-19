@@ -17,7 +17,12 @@ describe('VectorsChecklistComponent', () => {
 
   it('It must have 6 vectors initialized as not marked', () => {
     expect(component.vectors.length).toBe(6);
-    expect(component.vectors.every((vector) => !vector.marca)).toBeTrue();
+    expect(component.vectors.every((vector) => !vector.mark)).toBeTrue();
+  });
+
+  it('It should mark the vector correctly', () => {
+    component.updateVector(0, { target: { checked: true } } as any);
+    expect(component.vectors[0].mark).toBeTrue();
   });
 });
 
