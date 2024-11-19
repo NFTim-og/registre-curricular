@@ -1,5 +1,10 @@
 <h1 class="title">EduApp</h1>
 <ul>
-    <li class="courses">Els meus Cursos</li>
+    <button class="courses-toggle" (click)="toggleCourses()">Els meus Cursos</button>
+    <ul *ngIf="isCoursesExpanded" class="subsections">
+      <li>1er/2on</li>
+      <li>3er/4rt</li>
+      <li>5e/6e</li>
+    </ul>
 </ul>
   
