@@ -1,9 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdACompetencesComponent } from './sda-competences.component';
 import { By } from '@angular/platform-browser';
-
-
-// Importació de competències
 import competencesData from '../../assets/competences.json';
 
 describe('SdACompetencesComponent', () => {
@@ -12,7 +9,6 @@ describe('SdACompetencesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      // Importa el component autònom en lloc de declarar-lo
       imports: [SdACompetencesComponent],
     }).compileComponents();
 
@@ -25,7 +21,6 @@ describe('SdACompetencesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // Definició dels tipus explícits basats en el JSON
   interface Criteri {
     id: string;
     description: string;
@@ -68,18 +63,13 @@ describe('SdACompetencesComponent', () => {
 
   it('should create checkboxes for each criteri inside competences', () => {
     const compiled = fixture.nativeElement;
-
-    // Verifica que hi ha competències
     expect(component.competences.length).toBeGreaterThan(0);
 
-    // Itera sobre les competències i els criteris per verificar els checkboxos
     component.competences.forEach((competence: { criteres: any[]; }) => {
       competence.criteres.forEach((criteri) => {
         const checkbox = compiled.querySelector(
           `input[type="checkbox"][id="${criteri.id}"]`
         );
-
-        // Comprova que el checkbox existeix al DOM
         expect(checkbox).toBeTruthy();
       });
     });
@@ -87,26 +77,19 @@ describe('SdACompetencesComponent', () => {
 
   it('should toggle the checkbox state when clicked', () => {
     const firstCriteri = component.competences[0].criteres[0];
-
-    // Trobar el checkbox al DOM
     const checkboxDebugElement = fixture.debugElement.query(
       By.css(`input[type="checkbox"][id="${firstCriteri.id}"]`)
     );
 
     const checkbox = checkboxDebugElement.nativeElement;
-
-    // Simula el clic
     checkbox.click();
     fixture.detectChanges();
 
-    // Verifica que el checkbox està marcat
     expect(checkbox.checked).toBeTrue();
 
-    // Torna a simular el clic per desmarcar
     checkbox.click();
     fixture.detectChanges();
 
-    // Verifica que el checkbox no està marcat
     expect(checkbox.checked).toBeFalse();
   });
 
@@ -118,16 +101,37 @@ describe('SdACompetencesComponent', () => {
       By.css('#progress-bar')
     ).nativeElement;
   
-    // Vérifier la progression initiale
     expect(component.progress).toBe(0);
     expect(progressBar.value).toBe(0);
   
-    // Simuler un clic sur un checkbox
     firstCriteriCheckbox.click();
     fixture.detectChanges();
   
-    // Vérifier que la progression a augmenté
     expect(component.progress).toBeGreaterThan(0);
     expect(progressBar.value).toBe(component.progress);
   });
+  
+  it('should check competence checkbox when at least one criteri is checked', () => {
+    const firstCriteri = component.competences[0].criteres[0];
+
+    
+    const competenceCheckbox = fixture.debugElement.query(
+      By.css(`#competence-checkbox-0`)
+    ).nativeElement;
+    expect(competenceCheckbox.checked).toBeFalse();
+
+    
+    const checkbox = fixture.debugElement.query(
+      By.css(`input[type="checkbox"][id="${firstCriteri.id}"]`)
+    ).nativeElement;
+    checkbox.click();
+    fixture.detectChanges();
+
+   
+    expect(competenceCheckbox.checked).toBeTrue();
+  });
+  
+  
+  
+  
 });
