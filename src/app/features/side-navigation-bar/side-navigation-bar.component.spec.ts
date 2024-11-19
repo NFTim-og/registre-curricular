@@ -28,9 +28,9 @@ describe('SideNavigationBarComponent', () => {
   });
   
   it('should display the "Els meus Cursos" section', () => {
-    const section = fixture.debugElement.query(By.css('.courses')).nativeElement;
+    const section = fixture.debugElement.query(By.css('.courses-toggle')).nativeElement;
     expect(section.textContent).toContain('Els meus Cursos');
-  });
+  });  
   
   it('should toggle subsections when "Els meus Cursos" is clicked', () => {
     const toggleButton = fixture.debugElement.query(By.css('.courses-toggle'));
