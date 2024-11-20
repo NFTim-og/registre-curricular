@@ -63,20 +63,16 @@ describe('SdACompetencesComponent', () => {
   });
   it('should toggle the checkbox state when clicked', () => {
     const firstCriteri = component.competences[0].criteres[0];
-    // Trobar el checkbox al DOM
+    
     const checkboxDebugElement = fixture.debugElement.query(
       By.css(`input[type="checkbox"][id="${firstCriteri.id}"]`)
     );
     const checkbox = checkboxDebugElement.nativeElement;
-    // Simula el clic
     checkbox.click();
     fixture.detectChanges();
-    // Verifica que el checkbox està marcat
     expect(checkbox.checked).toBeTrue();
-    // Torna a simular el clic per desmarcar
     checkbox.click();
     fixture.detectChanges();
-    // Verifica que el checkbox no està marcat
     expect(checkbox.checked).toBeFalse();
   });
   it('should update progress bar when checkboxes are clicked', () => {
