@@ -7,7 +7,7 @@ describe('SdACompetencesComponent', () => {
   let fixture: ComponentFixture<SdACompetencesComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      // Importa el component autònom en lloc de declarar-lo
+
       imports: [SdACompetencesComponent],
     }).compileComponents();
     fixture = TestBed.createComponent(SdACompetencesComponent);

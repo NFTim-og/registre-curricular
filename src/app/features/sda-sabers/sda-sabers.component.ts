@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import sabersData from '../../../assets/sabers.json';
 
 @Component({
   selector: 'app-sda-sabers',
-  standalone: true,
-  imports: [],
   templateUrl: './sda-sabers.component.html',
-  styleUrl: './sda-sabers.component.css'
+  styleUrls: ['./sda-sabers.component.css']
 })
-export class SdaSabersComponent {
+export class SdASabersComponent implements OnInit {
+  sabersCategories: any = []; 
 
+  ngOnInit(): void {
+    this.sabersCategories = sabersData.categories;
+  }
 }

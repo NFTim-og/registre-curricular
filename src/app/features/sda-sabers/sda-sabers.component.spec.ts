@@ -1,23 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SdASabersComponent } from './sda-sabers.component';
 
-import { SdaSabersComponent } from './sda-sabers.component';
 
-describe('SdaSabersComponent', () => {
-  let component: SdaSabersComponent;
-  let fixture: ComponentFixture<SdaSabersComponent>;
+describe('SdASabersComponent', () => {
+  let component: SdASabersComponent;
+  let fixture: ComponentFixture<SdASabersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SdaSabersComponent]
-    })
-    .compileComponents();
+      declarations: [SdASabersComponent]
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(SdaSabersComponent);
+    fixture = TestBed.createComponent(SdASabersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the SdASabersComponent', () => {
     expect(component).toBeTruthy();
   });
 });
