@@ -57,4 +57,18 @@ describe('SdASabersComponent', () => {
       });
     });
   });
+
+  it('should create checkboxes for each saber inside categories', () => {
+    const compiled = fixture.nativeElement;
+    expect(component.sabersCategories.length).toBeGreaterThan(0);
+  
+    component.sabersCategories.forEach((category: { sabers: any[]; }) => {
+      category.sabers.forEach((saber) => {
+        const checkbox = compiled.querySelector(
+          `input[type="checkbox"][id="${saber.id}"]`
+        );
+        expect(checkbox).toBeTruthy(); 
+      });
+    });
+  });
 });

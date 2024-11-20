@@ -51,15 +51,12 @@ describe('SdACompetencesComponent', () => {
   });
   it('should create checkboxes for each criteri inside competences', () => {
     const compiled = fixture.nativeElement;
-    // Verifica que hi ha competències
     expect(component.competences.length).toBeGreaterThan(0);
-    // Itera sobre les competències i els criteris per verificar els checkboxos
     component.competences.forEach((competence: { criteres: any[]; }) => {
       competence.criteres.forEach((criteri) => {
         const checkbox = compiled.querySelector(
           `input[type="checkbox"][id="${criteri.id}"]`
         );
-        // Comprova que el checkbox existeix al DOM
         expect(checkbox).toBeTruthy();
       });
     });
