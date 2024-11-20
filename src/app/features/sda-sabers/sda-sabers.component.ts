@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import sabersData from '../../../assets/sabers.json';
+import { CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-sda-sabers',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './sda-sabers.component.html',
   styleUrls: ['./sda-sabers.component.css']
 })
