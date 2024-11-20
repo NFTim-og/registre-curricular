@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdASabersComponent } from './sda-sabers.component';
 import sabersData from '../../../assets/sabers.json';
+import { By } from '@angular/platform-browser';
 
 describe('SdASabersComponent', () => {
   let component: SdASabersComponent;
@@ -71,4 +72,23 @@ describe('SdASabersComponent', () => {
       });
     });
   });
+
+  it('should toggle the checkbox state when clicked', () => {
+    const firstSaber = component.sabersCategories[0].sabers[0];
+    const checkboxDebugElement = fixture.debugElement.query(
+      By.css(`input[type="checkbox"][id="${firstSaber.id}"]`)
+    );
+    const checkbox = checkboxDebugElement.nativeElement;
+  
+    checkbox.click();
+    fixture.detectChanges();
+  
+    expect(checkbox.checked).toBeTrue();
+  
+    checkbox.click();
+    fixture.detectChanges();
+
+    expect(checkbox.checked).toBeFalse();
+  });
+  
 });
