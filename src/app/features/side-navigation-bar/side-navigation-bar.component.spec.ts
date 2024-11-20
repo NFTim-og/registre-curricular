@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SideNavigationBarComponent } from './side-navigation-bar.component';
 import { By } from '@angular/platform-browser';
 
