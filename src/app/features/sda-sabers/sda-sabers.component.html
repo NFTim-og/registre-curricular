@@ -3,7 +3,11 @@
     <ul>
       <li *ngFor="let saber of category.sabers">
         <label>
-          <input type="checkbox" [id]="saber.id" />
+          <input 
+            type="checkbox" 
+            [id]="saber.id" 
+            (change)="toggleSaberSelection(saber.id)" 
+          />
           {{ saber.description }}
         </label>
       </li>

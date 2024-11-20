@@ -11,8 +11,16 @@ import { CommonModule} from '@angular/common';
 })
 export class SdASabersComponent implements OnInit {
   sabersCategories: any = []; 
+  selectedSabers: Set<number> = new Set();
 
   ngOnInit(): void {
     this.sabersCategories = sabersData.categories;
+  }
+  toggleSaberSelection(id: number): void {
+    if (this.selectedSabers.has(id)) {
+      this.selectedSabers.delete(id);
+    } else {
+      this.selectedSabers.add(id);
+    }
   }
 }
