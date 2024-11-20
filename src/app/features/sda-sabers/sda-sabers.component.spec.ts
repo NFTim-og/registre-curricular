@@ -90,5 +90,28 @@ describe('SdASabersComponent', () => {
 
     expect(checkbox.checked).toBeFalse();
   });
+  it('should update progress bar when checkboxes are clicked', () => {
+    const firstSaberCheckbox = fixture.debugElement.query(
+      By.css(`input[type="checkbox"][id="1.1"]`)
+    ).nativeElement;
+    const progressBar = fixture.debugElement.query(
+      By.css('#progress-bar')
+    ).nativeElement;
+  
+    expect(component.progress).toBe(0);
+    expect(progressBar.value).toBe(0);
+  
+    firstSaberCheckbox.click();
+    fixture.detectChanges();
+  
+    expect(component.progress).toBeGreaterThan(0);
+    expect(progressBar.value).toBe(component.progress);
+  
+    firstSaberCheckbox.click();
+    fixture.detectChanges();
+  
+    expect(component.progress).toBe(0);
+    expect(progressBar.value).toBe(0);
+  });
   
 });

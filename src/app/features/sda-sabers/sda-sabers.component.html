@@ -14,3 +14,9 @@
     </ul>
   </div>
   
+  <div>
+    <label for="progress-bar">Progrés:</label>
+    <progress id="progress-bar" [value]="progress" max="100"></progress>
+    <span>{{ progress | number: '1.0-0' }}%</span>
+  </div>
+  
