@@ -2,7 +2,10 @@
     <h2>{{ category.name }}</h2>
     <ul>
       <li *ngFor="let saber of category.sabers">
-        <strong>{{ saber.id }}</strong>: {{ saber.description }}
+        <label>
+          <input type="checkbox" [id]="saber.id" />
+          {{ saber.description }}
+        </label>
       </li>
     </ul>
   </div>
