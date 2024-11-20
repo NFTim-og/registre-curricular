@@ -17,7 +17,6 @@ describe('SdACompetencesComponent', () => {
   it('should create the SdACompetencesComponent', () => {
     expect(component).toBeTruthy();
   });
-  // Definició dels tipus explícits basats en el JSON
   interface Criteri {
     id: string;
     description: string;
