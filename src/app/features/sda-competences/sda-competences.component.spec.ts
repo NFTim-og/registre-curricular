@@ -83,15 +83,13 @@ describe('SdACompetencesComponent', () => {
       By.css('#progress-bar')
     ).nativeElement;
   
-    // Vérifier la progression initiale
     expect(component.progress).toBe(0);
     expect(progressBar.value).toBe(0);
   
-    // Simuler un clic sur un checkbox
+    
     firstCriteriCheckbox.click();
     fixture.detectChanges();
   
-    // Vérifier que la progression a augmenté
     expect(component.progress).toBeGreaterThan(0);
     expect(progressBar.value).toBe(component.progress);
   });
