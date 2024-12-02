@@ -9,7 +9,7 @@ describe('SdASabersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SdASabersComponent] // Cambiado a imports
+      imports: [SdASabersComponent] 
     }).compileComponents();
 
     fixture = TestBed.createComponent(SdASabersComponent);

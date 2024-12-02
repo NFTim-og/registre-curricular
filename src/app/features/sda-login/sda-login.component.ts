@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import loginData from '../../../assets/login.json';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sda-login',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './sda-login.component.html',
-  styleUrl: './sda-login.component.css'
+  styleUrls: ['./sda-login.component.css']
 })
-export class SdaLoginComponent {
+export class SdALoginComponent implements OnInit {
+  loginDetails: any = {}; 
 
+  ngOnInit(): void {
+    this.loginDetails = loginData; 
+    console.log('Login details loaded:', this.loginDetails);
+  }
 }
