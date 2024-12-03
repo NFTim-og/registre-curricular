@@ -149,5 +149,34 @@ describe('SdALoginComponent', () => {
     });
   });
   
-   
+  describe('Form validation', () => {
+    it('should not submit if any field is empty', () => {
+      const compiled = fixture.nativeElement;
+  
+      const userInput = compiled.querySelector('#userInput') as HTMLInputElement;
+      const passwordInput = compiled.querySelector('#passwordInput') as HTMLInputElement;
+      const loginButton = compiled.querySelector('#loginButton') as HTMLButtonElement;
+  
+      // Simuler des champs vides
+      userInput.value = '';
+      passwordInput.value = '';
+      userInput.dispatchEvent(new Event('input'));
+      passwordInput.dispatchEvent(new Event('input'));
+  
+      spyOn(component, 'onSubmit').and.callThrough(); // Espionner la méthode onSubmit
+  
+      // Cliquer sur le bouton de soumission
+      loginButton.click();
+      fixture.detectChanges();
+  
+      // Vérifications
+      expect(component.onSubmit).toHaveBeenCalled();
+      expect(component.loginDetails.user).toBe('');
+      expect(component.loginDetails.password).toBe('');
+      expect(component.isSubmitted).toBeTrue(); // Vérifie qu'on a tenté de soumettre
+      expect(component.loginDetails.user).not.toBe('prof@example.com'); // Champ reste vide
+      expect(component.loginDetails.password).not.toBe('password123'); // Champ reste vide
+    });
+  });
+  
 });

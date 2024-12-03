@@ -1,21 +1,31 @@
-<div class="login-details">
-    <label for="userInput">User:</label>
-    <input
-      id="userInput"
-      type="text"
-      [(ngModel)]="loginDetails.user"
-      placeholder="Enter user"
-    />
+<div class="login-container">
+    <div class="login-box">
+      <h1>Login</h1>
+      <div class="login-details">
+        <label for="userInput">User:</label>
+        <input
+          id="userInput"
+          type="text"
+          [(ngModel)]="loginDetails.user"
+          placeholder="Enter your email"
+        />
+        <p *ngIf="!loginDetails.user && isSubmitted" class="error">
+          User is required
+        </p>
   
-    <label for="passwordInput">Password:</label>
-    <input
-      id="passwordInput"
-      type="password"
-      [(ngModel)]="loginDetails.password"
-      placeholder="Enter password"
-    />
+        <label for="passwordInput">Password:</label>
+        <input
+          id="passwordInput"
+          type="password"
+          [(ngModel)]="loginDetails.password"
+          placeholder="Enter your password"
+        />
+        <p *ngIf="!loginDetails.password && isSubmitted" class="error">
+          Password is required
+        </p>
   
-    <!-- Bouton de soumission -->
-    <button id="loginButton" (click)="onSubmit()">Login</button>
+        <button id="loginButton" (click)="onSubmit()">Login</button>
+      </div>
+    </div>
   </div>
   
