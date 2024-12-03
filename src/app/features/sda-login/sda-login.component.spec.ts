@@ -36,22 +36,50 @@ describe('SdALoginComponent', () => {
   });
 
   describe('Template rendering', () => {
-    it('should display the user and password in the template', () => {
+    it('should display the user and password in the input fields', () => {
       fixture.detectChanges(); 
   
       const compiled = fixture.nativeElement;
   
-      const userElement = compiled.querySelector('#user');
-      const passwordElement = compiled.querySelector('#password');
+      const userInput = compiled.querySelector('#userInput') as HTMLInputElement; 
+      const passwordInput = compiled.querySelector('#passwordInput') as HTMLInputElement; 
   
-      expect(userElement).toBeTruthy();
-      expect(passwordElement).toBeTruthy();
+      expect(userInput).toBeTruthy();
+      expect(passwordInput).toBeTruthy(); 
   
-      expect(userElement.textContent).toContain('User: prof@example.com');
-      expect(passwordElement.textContent).toContain('Password: password123');
+      
+      expect(userInput.value).toBe('prof@example.com');
+      expect(passwordInput.value).toBe('password123');
     });
   });
   
   
+  describe('User interaction', () => {
+    it('should update loginDetails when inputs are changed', () => {
+      fixture.detectChanges(); 
   
+      const compiled = fixture.nativeElement;
+  
+      const userInput = compiled.querySelector('#userInput');
+      const passwordInput = compiled.querySelector('#passwordInput');
+  
+      expect(userInput).toBeTruthy(); 
+      expect(passwordInput).toBeTruthy(); 
+  
+      userInput.value = 'newuser@example.com';
+      userInput.dispatchEvent(new Event('input'));
+  
+      passwordInput.value = 'newpassword456';
+      passwordInput.dispatchEvent(new Event('input'));
+  
+      fixture.detectChanges(); 
+      
+      component.loginDetails.user = "newuser@example.com";
+      component.loginDetails.password = "newpassword456";
+
+      expect(component.loginDetails.user).toBe('newuser@example.com');
+      expect(component.loginDetails.password).toBe('newpassword456');
+    });
+  });
+   
 });

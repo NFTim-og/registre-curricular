@@ -1,5 +1,18 @@
 <div class="login-details">
-    <p id="user">User: {{ loginDetails.usuari }}</p>
-    <p id="password">Password: {{ loginDetails.contrasenya }}</p>
+    <label for="userInput">User:</label>
+    <input
+      id="userInput"
+      type="text"
+      [(ngModel)]="loginDetails.user"
+      placeholder="Enter user"
+    />
+    
+    <label for="passwordInput">Password:</label>
+    <input
+      id="passwordInput"
+      type="password"
+      [(ngModel)]="loginDetails.password"
+      placeholder="Enter password"
+    />
   </div>
   
