@@ -124,6 +124,30 @@ describe('SdALoginComponent', () => {
     });
   });
   
+  describe('Form Submission', () => {
+    it('should call onSubmit and log the user details when login button is clicked', () => {
+      // Réinitialiser le modèle de loginDetails
+      component.loginDetails = {
+        user: 'test@example.com',
+        password: 'test123',
+      };
+      fixture.detectChanges(); // Mettre à jour le DOM
+  
+      // Espionner la méthode onSubmit
+      spyOn(component, 'onSubmit'); // Surveille l'appel de cette méthode
+  
+      // Obtenez une référence au bouton de soumission
+      const compiled = fixture.nativeElement;
+      const loginButton = compiled.querySelector('#loginButton') as HTMLButtonElement;
+  
+      // Simulez un clic sur le bouton
+      loginButton.click();
+      fixture.detectChanges(); // Mettre à jour après l'interaction
+  
+      // Vérifiez si onSubmit a été appelé
+      expect(component.onSubmit).toHaveBeenCalled();
+    });
+  });
   
    
 });

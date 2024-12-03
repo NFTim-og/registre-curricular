@@ -6,7 +6,7 @@
       [(ngModel)]="loginDetails.user"
       placeholder="Enter user"
     />
-    
+  
     <label for="passwordInput">Password:</label>
     <input
       id="passwordInput"
@@ -14,5 +14,8 @@
       [(ngModel)]="loginDetails.password"
       placeholder="Enter password"
     />
+  
+    <!-- Bouton de soumission -->
+    <button id="loginButton" (click)="onSubmit()">Login</button>
   </div>
   
