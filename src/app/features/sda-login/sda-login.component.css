@@ -1,36 +1,56 @@
 .login-container {
   max-width: 400px;
   margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  padding: 30px; /* Aumenté el padding */
+  border: 1px solid #e0e0e0; /* Color de borde más suave */
+  border-radius: 12px; /* Bordes más redondeados */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  background-color: #f9f9f9; /* Color de fondo más claro */
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Aumenté el margen inferior */
 }
 
 .form-control {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Aumenté el padding */
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 6px; /* Bordes más redondeados */
+  font-size: 16px; /* Aumenté el tamaño de fuente */
+  transition: border-color 0.3s; /* Transición suave para el borde */
+}
+
+.form-control:focus {
+  border-color: #007bff; /* Color de borde al enfocar */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Aumenté el margen inferior */
+}
+
+.form-group.password {
+  margin-top: 10px; /* Espacio entre el campo de usuario y el de contraseña */
 }
 
 .btn {
   display: block;
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  padding: 12px; /* Aumenté el padding */
+  font-size: 18px; /* Aumenté el tamaño de fuente */
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: #28a745; /* Cambié el color de fondo */
   border: none;
-  border-radius: 4px;
+  border-radius: 6px; /* Bordes más redondeados */
   cursor: pointer;
+  transition: background-color 0.3s; /* Transición suave para el fondo */
+  margin-top: 20px; /* Espacio entre el botón y el campo de contraseña */
+}
+
+.btn:hover {
+  background-color: #218838; /* Color de fondo al pasar el ratón */
 }
 
 .btn:disabled {
@@ -38,6 +58,9 @@
 }
 
 .error-message {
-  color: red;
-  font-size: 12px;
+  color: #d9534f; /* Color de error */
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
 }

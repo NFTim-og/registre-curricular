@@ -20,8 +20,10 @@ export class SdALoginComponent {
   loginError: string | null = null;
 
   onSubmit(): void {
-    // Vérifier les données avec le mock
-    if (
+    // Vérifier si les champs sont vides
+    if (!this.loginDetails.user || !this.loginDetails.password) {
+      this.loginError = 'Please fill in the fields.';
+    } else if (
       this.loginDetails.user === MOCK_DATA.user &&
       this.loginDetails.password === MOCK_DATA.password
     ) {
@@ -31,4 +33,5 @@ export class SdALoginComponent {
       this.loginError = 'Invalid credentials. Please try again.';
     }
   }
+  
 }

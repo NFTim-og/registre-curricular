@@ -33,4 +33,26 @@ describe('SdALoginComponent - Correct Credentials', () => {
     // Vérifier que l'erreur est nulle (succès)
     expect(component.loginError).toBeNull();
   });
+
+  it('should show error message when credentials are incorrect', () => {
+    // Simuler des identifiants incorrects
+    component.loginDetails.user = 'wronguser@example.com';
+    component.loginDetails.password = 'wrongpassword';
+
+    component.onSubmit();
+
+    // Vérifier que le message d'erreur s'affiche
+    expect(component.loginError).toBe('Invalid credentials. Please try again.');
+  });
+
+  it('should show error message when fields are empty', () => {
+    // Simuler des champs vides
+    component.loginDetails.user = '';
+    component.loginDetails.password = '';
+
+    component.onSubmit();
+
+    // Vérifier que le message d'erreur est affiché pour les champs vides
+    expect(component.loginError).toBe('Please fill in the fields.');
+  });
 });
