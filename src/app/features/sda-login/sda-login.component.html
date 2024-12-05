@@ -1,31 +1,33 @@
 <div class="login-container">
-    <div class="login-box">
-      <h1>Login</h1>
-      <div class="login-details">
-        <label for="userInput">User:</label>
-        <input
-          id="userInput"
-          type="text"
-          [(ngModel)]="loginDetails.user"
-          placeholder="Enter your email"
-        />
-        <p *ngIf="!loginDetails.user && isSubmitted" class="error">
-          User is required
-        </p>
-  
-        <label for="passwordInput">Password:</label>
-        <input
-          id="passwordInput"
-          type="password"
-          [(ngModel)]="loginDetails.password"
-          placeholder="Enter your password"
-        />
-        <p *ngIf="!loginDetails.password && isSubmitted" class="error">
-          Password is required
-        </p>
-  
-        <button id="loginButton" (click)="onSubmit()">Login</button>
-      </div>
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="userInput">Username:</label>
+      <input
+        id="userInput"
+        type="text"
+        [(ngModel)]="loginDetails.user"
+        name="user"
+        required
+      />
     </div>
-  </div>
-  
+
+    <div>
+      <label for="passwordInput">Password:</label>
+      <input
+        id="passwordInput"
+        type="password"
+        [(ngModel)]="loginDetails.password"
+        name="password"
+        required
+      />
+    </div>
+
+    <!-- Message d'erreur affiché uniquement si les identifiants sont incorrects -->
+    <div *ngIf="loginError" class="error-message">
+      {{ loginError }}
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+</div>

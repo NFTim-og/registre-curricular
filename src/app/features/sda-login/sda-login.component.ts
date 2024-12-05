@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import loginData from '../../../assets/login.json';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+// Mock data simulant une base de données
+const MOCK_DATA = {
+  user: 'prof@example.com',
+  password: 'password123',
+};
 
 @Component({
   selector: 'app-sda-login',
@@ -10,23 +15,20 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './sda-login.component.html',
   styleUrls: ['./sda-login.component.css']
 })
-
-export class SdALoginComponent implements OnInit {
-  loginDetails: any = {};
-  isSubmitted: boolean = false;
-
-  ngOnInit(): void {
-    this.loginDetails = loginData;
-    console.log('Login details loaded:', this.loginDetails);
-  }
+export class SdALoginComponent {
+  loginDetails = { user: '', password: '' };
+  loginError: string | null = null;
 
   onSubmit(): void {
-    this.isSubmitted = true; // Indique que l'utilisateur a soumis le formulaire
-    if (!this.loginDetails.user || !this.loginDetails.password) {
-      console.error('Form validation failed: All fields are required.');
-      return; // Empêche la soumission si un champ est vide
+    // Vérifier les données avec le mock
+    if (
+      this.loginDetails.user === MOCK_DATA.user &&
+      this.loginDetails.password === MOCK_DATA.password
+    ) {
+      this.loginError = null;
+      alert('Login successful!');
+    } else {
+      this.loginError = 'Invalid credentials. Please try again.';
     }
-    console.log('Form submitted successfully with:', this.loginDetails);
   }
 }
-
