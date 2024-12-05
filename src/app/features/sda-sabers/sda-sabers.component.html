@@ -1,1 +1,22 @@
-<p>sda-sabers works!</p>
+<div *ngFor="let category of sabersCategories">
+    <h2>{{ category.name }}</h2>
+    <ul>
+      <li *ngFor="let saber of category.sabers">
+        <label>
+          <input 
+            type="checkbox" 
+            [id]="saber.id" 
+            (change)="toggleSaberSelection(saber.id)" 
+          />
+          {{ saber.description }}
+        </label>
+      </li>
+    </ul>
+  </div>
+  
+  <div>
+    <label for="progress-bar">Progrés:</label>
+    <progress id="progress-bar" [value]="progress" max="100"></progress>
+    <span>{{ progress | number: '1.0-0' }}%</span>
+  </div>
+  
