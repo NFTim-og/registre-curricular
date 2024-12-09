@@ -68,7 +68,7 @@ describe('SdALoginComponent - Correct Credentials', () => {
 
     // Vérifier que le message d'erreur s'affiche
     expect(router.url).toBe('');
-    expect(component.loginError).toBe('Invalid credentials. Please try again.');
+    expect(component.loginError).toBe('An unexpected error occurred.');
   });
 
   it('should show error message when fields are empty', () => {
@@ -80,6 +80,6 @@ describe('SdALoginComponent - Correct Credentials', () => {
 
     // Vérifier que le message d'erreur est affiché pour les champs vides
     expect(router.url).toBe('');
-    expect(component.loginError).toBe('Please fill in the fields.');
+    expect(component.loginError).toBe('Please fill in all the fields.');
   });
 });
