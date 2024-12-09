@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SdALoginService } from '../../../core/services/sda-login.service';
+import { SdALoginService } from '../../core/services/sda-login.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sda-login',
+  selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './sda-login.component.html',
-  styleUrls: ['./sda-login.component.css']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class SdALoginComponent {
+export class LoginComponent {
   loginDetails = { user: '', password: '' };
   loginError: string | null = null;
 

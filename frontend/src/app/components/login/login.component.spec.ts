@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { SdALoginComponent } from './sda-login.component';
-import { SdALoginService } from '../../../core/services/sda-login.service';
+import { LoginComponent } from './login.component';
+import { SdALoginService } from '../../core/services/sda-login.service';
 import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 
@@ -29,8 +29,8 @@ class MockLoginService {
 }
 
 describe('SdALoginComponent - Correct Credentials', () => {
-  let component: SdALoginComponent;
-  let fixture: ComponentFixture<SdALoginComponent>;
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
   let router: MockRouter;
 
   beforeEach(async () => {
@@ -44,7 +44,7 @@ describe('SdALoginComponent - Correct Credentials', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SdALoginComponent);
+    fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

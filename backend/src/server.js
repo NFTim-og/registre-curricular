@@ -24,17 +24,17 @@ app.get('/', (req, res) => {
   res.send('Servidor de backend funcionando');
 });
 
-app.post('/api/login', async (req, res) => {
+app.post('/api/v1/login', async (req, res) => {
   const { user, password } = req.body;
-  
-  if (!user || !password) {
-    return res.status(400).json({ success: false, message: 'User or password missing' });
-  }
 
   try {
     await mssql.connect(sqlConfig);
 
     const result = await mssql.query`SELECT * FROM login WHERE user = ${user} AND password = ${password}`;
+    
+    if (!user || !password) {
+      return res.status(400).json({ success: false, message: 'User or password missing' });
+    }
 
     if (result.recordset.length > 0) {
       res.status(200).json({ success: true, message: 'Login successful' });
