@@ -4,14 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { SdALoginService } from '../../../core/services/sda-login.service';
 import { Router } from '@angular/router';
 
-
-
-// Mock data simulant une base de données
-const MOCK_DATA = {
-  user: 'prof@example.com',
-  password: 'password123',
-};
-
 @Component({
   selector: 'app-sda-login',
   standalone: true,
@@ -26,24 +18,29 @@ export class SdALoginComponent {
   constructor(private loginService: SdALoginService, private router: Router) {}
 
   onSubmit(): void {
+    // Vérifie si les champs sont vides
     if (!this.loginDetails.user || !this.loginDetails.password) {
-      this.loginError = 'Please fill in the fields.';
+      this.loginError = 'Please fill in all the fields.';
       return;
     }
 
+    // Appelle le service pour envoyer les données au backend
     this.loginService.login(this.loginDetails.user, this.loginDetails.password).subscribe({
       next: (response) => {
         if (response.success) {
+          // Succès : redirection ou autre logique
           this.loginError = null;
-          this.router.navigate(['/listusers']); // Redirigeix si el login és correcte
+          this.router.navigate(['/listusers']);
         } else {
-          this.loginError = 'Invalid credentials. Please try again.';
+          // Gère l'erreur renvoyée par le backend
+          this.loginError = response.message || 'An unexpected error occurred.';
         }
       },
-      error: () => {
-        this.loginError = 'An error occurred. Please try again later.';
-      },
+      error: (err) => {
+        // Gère les erreurs réseau ou serveur
+        console.error('Error during login request:', err);
+        this.loginError = 'Server connection failed. Please try again later.';
+      }
     });
   }
-  
 }
