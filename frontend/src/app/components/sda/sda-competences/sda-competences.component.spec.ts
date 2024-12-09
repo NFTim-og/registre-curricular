@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdACompetencesComponent } from './sda-competences.component';
 import { By } from '@angular/platform-browser';
-import competencesData from '../../../assets/competences.json';
+import competencesData from '../../../../assets/competences.json';
 describe('SdACompetencesComponent', () => {
   let component: SdACompetencesComponent;
   let fixture: ComponentFixture<SdACompetencesComponent>;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import competencesData from '../../../assets/competences.json';
+import competencesData from '../../../../assets/competences.json';
 @Component({
   selector: 'app-sda-competences',
   standalone: true,

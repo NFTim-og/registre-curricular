@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SdaBasicInfoComponent } from "./features/sda-basic-info/sda-basic-info.component";
-import { SdACompetencesComponent } from './features/sda-competences/sda-competences.component';
-import { SideNavigationBarComponent } from './features/side-navigation-bar/side-navigation-bar.component';
-import { SdASabersComponent } from './features/sda-sabers/sda-sabers.component';
-import { SdALoginComponent } from './features/sda-login/sda-login.component';
+import { SdaBasicInfoComponent } from "./components/sda/sda-basic-info/sda-basic-info.component";
+import { SdACompetencesComponent } from './components/sda/sda-competences/sda-competences.component';
+import { SideNavigationBarComponent } from './components/side-navigation-bar/side-navigation-bar.component';
+import { SdASabersComponent } from './components/sda/sda-sabers/sda-sabers.component';
+import { SdALoginComponent } from './components/sda/sda-login/sda-login.component';
 
 
 @Component({

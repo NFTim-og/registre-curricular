@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdASabersComponent } from './sda-sabers.component';
-import sabersData from '../../../assets/sabers.json';
+import sabersData from '../../../../assets/sabers.json';
 import { By } from '@angular/platform-browser';
 
 describe('SdASabersComponent', () => {

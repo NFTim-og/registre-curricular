@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import sabersData from '../../../assets/sabers.json';
+import sabersData from '../../../../assets/sabers.json';
 import { CommonModule } from '@angular/common';
 
 @Component({
