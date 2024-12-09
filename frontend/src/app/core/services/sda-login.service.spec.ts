@@ -28,7 +28,7 @@ describe('SdALoginService', () => {
       expect(response).toEqual(mockResponse);
     });
 
-    const req = httpMock.expectOne('http://localhost:3000/api/login');
+    const req = httpMock.expectOne('http://localhost:3000/api/v1/login');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({ user, password });
 
