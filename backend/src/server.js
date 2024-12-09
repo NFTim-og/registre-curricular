@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
 
 app.post('/api/login', async (req, res) => {
   const { user, password } = req.body;
+  
+  if (!user || !password) {
+    return res.status(400).json({ success: false, message: 'User or password missing' });
+  }
 
   try {
     await mssql.connect(sqlConfig);
