@@ -1,0 +1,99 @@
+{
+    "competences": [
+      {
+        "id": 1,
+        "description": "Prendre consciència de la diversitat lingüística i cultural a partir del reconeixement de les llengües de l'alumnat i la realitat plurilingüe i pluricultural per afavorir la transferència lingüística, identificar i rebutjar estereotips i prejudicis lingüístics i valorar aquesta diversitat com a font de riquesa cultural.",
+        "criteris": [
+          {
+            "id": "1.1",
+            "description": "Identificar les diferents llengües de l'entorn, inclosa la llengua de signes, i les seves variants dialectals, a través de la descripció d'algunes expressions d'ús quotidià."
+          },
+          {
+            "id": "1.2",
+            "description": "Detectar i rebutjar, de manera acompanyada i en contextos senzills i propers, alguns prejudicis i estereotips lingüístics, de gènere i culturals molt freqüents."
+          },
+          {
+            "id": "1.3",
+            "description": "Descriure i valorar la pluralitat lingüística de l'entorn com a font de riquesa cultural, a partir de l'observació i la identificació de la realitat pròxima."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "Comprendre i interpretar textos orals i multimodals, i identificar el sentit general i la informació més rellevant, valorant, de manera progressivament autònoma, aspectes formals i de contingut bàsics per construir coneixement, formar-se opinió i eixamplar les possibilitats de gaudi i lleure.",
+        "criteris": [
+          {
+            "id": "2.1",
+            "description": "Extreure informació rellevant de textos orals i multimodals relacionats amb situacions d’aprenentatge i la vida quotidiana de l’aula."
+          },
+          {
+            "id": "2.2",
+            "description": "Reconèixer, de forma acompanyada, el tema, idees principals i missatges explícits de textos orals i multimodals. Iniciar-se, també de forma acompanyada, en la valoració del contingut i de la forma (elements no verbals)."
+          }
+        ]
+      }
+    ],
+    "sabers": [
+      {
+        "id": 1,
+        "description": "Les llengües i els seus parlants.",
+        "sabers": [
+          {
+            "id": "1.1",
+            "description": "Presa de consciència de la diversitat lingüística per mitjà de la biografia lingüística personal i el mapa lingüístic de l’aula, treballats amb acompanyament."
+          },
+          {
+            "id": "1.2",
+            "description": "Identificació, amb acompanyament, de prejudicis i estereotips lingüístics i cerca de solucions."
+          },
+          {
+            "id": "1.3",
+            "description": "Ús d’un llenguatge no discriminatori i respectuós amb les diferències en la vida quotidiana."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "Comunicació oral.",
+        "sabers": [
+          {
+            "id": "2.1",
+            "description": "Interès per expressar-se oralment amb pronunciació i entonació adequades en les situacions d’aula."
+          },
+          {
+            "id": "2.2",
+            "description": "Comprensió de textos orals de tipologia diversa en diferents formats i mitjans."
+          },
+          {
+            "id": "2.3",
+            "description": "Identificació de la incidència dels components (situació, participants o intenció) en l’acte comunicatiu en diferents situacions comunicatives pròpies de l’aula i d’altres entorns informals."
+          },
+          {
+            "id": "2.4",
+            "description": "Aplicació d’estratègies lingüístiques elementals amb acompanyament i en contextos propers, per dotar textos breus i senzills d’adequació, coherència, cohesió i correcció."
+          },
+          {
+            "id": "2.5",
+            "description": "Identificació d’elements bàsics de contingut (tema, fórmules fixes, lèxic) i forma (estructura, format, imatges) en les produccions orals."
+          },
+          {
+            "id": "2.6",
+            "description": "Reproducció de textos orals memoritzats (cançons, poemes, dramatitzacions) en el marc de les propostes didàctiques d’aula."
+          },
+          {
+            "id": "2.7",
+            "description": "Ús de models textuals elementals (narració, descripció, diàleg) en les produccions orals, en el marc de les propostes didàctiques d’aula."
+          },
+          {
+            "id": "2.8",
+            "description": "Interacció oral adequada en situacions d’aula. Reconeixement i utilització d’estratègies bàsiques de cortesia lingüística."
+          },
+          {
+            "id": "2.9",
+            "description": "Aplicació d’estratègies d’escolta activa en la resolució dialogada dels conflictes, tenint en compte la perspectiva de gènere."
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -1,11 +1,33 @@
-<div id="language-selection">
-    <button id="english-button" (click)="onEnglishClick()">
-      {{ isEnglishSelected ? 'Anglais' : 'Anglais' }}
-    </button>
+<div id="options-section" *ngIf="isEnglishSelected">
+  <button id="english-button" (click)="onEnglishClick()">English</button>
+  <button id="competences-button" (click)="onCompetencesClick()">Competences</button>
+  <button id="sabers-button" (click)="onSabersClick()">Sabers</button>
+</div>
+
+<div id="display-section" *ngIf="isEnglishSelected">
+  <div *ngIf="competencesData.length > 0">
+      <ul>
+          <li *ngFor="let competence of competencesData">
+              {{ competence.description }}
+              <ul>
+                  <li *ngFor="let criteri of competence.criteris">
+                      {{ criteri.description }}
+                  </li>
+              </ul>
+          </li>
+      </ul>
   </div>
-  
-  <div id="options-section" *ngIf="isEnglishSelected">
-    <button id="competences-button" (click)="onCompetencesClick()">Compétences</button>
-    <button id="sabers-button" (click)="onSabersClick()">Sabers</button>
+
+  <div *ngIf="sabersData.length > 0">
+      <ul>
+          <li *ngFor="let saber of sabersData">
+              {{ saber.description }}
+              <ul>
+                  <li *ngFor="let subSaber of saber.sabers">
+                      {{ subSaber.description }}
+                  </li>
+              </ul>
+          </li>
+      </ul>
   </div>
-  
+</div>
