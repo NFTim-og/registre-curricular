@@ -12,7 +12,7 @@ export class BoardComponent {
   isEnglishSelected: boolean = false;
 
   onEnglishClick(): void {
-    this.isEnglishSelected = true;
+    this.isEnglishSelected = !this.isEnglishSelected; 
   }
 
   onCompetencesClick(): void {

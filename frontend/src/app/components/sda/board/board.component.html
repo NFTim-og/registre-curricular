@@ -1,5 +1,7 @@
 <div id="language-selection">
-    <button id="english-button" (click)="onEnglishClick()">Anglais</button>
+    <button id="english-button" (click)="onEnglishClick()">
+      {{ isEnglishSelected ? 'Anglais' : 'Anglais' }}
+    </button>
   </div>
   
   <div id="options-section" *ngIf="isEnglishSelected">
