@@ -1,0 +1,26 @@
+#language-selection {
+    margin-bottom: 20px;
+  }
+  
+  #options-section {
+    display: flex;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #options-section button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  #options-section button:hover {
+    background-color: #45a049;
+  }
+  

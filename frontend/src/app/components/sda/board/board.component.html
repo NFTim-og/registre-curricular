@@ -1,1 +1,9 @@
-<p>board works!</p>
+<div id="language-selection">
+    <button id="english-button" (click)="onEnglishClick()">Anglais</button>
+  </div>
+  
+  <div id="options-section" *ngIf="isEnglishSelected">
+    <button id="competences-button" (click)="onCompetencesClick()">Compétences</button>
+    <button id="sabers-button" (click)="onSabersClick()">Sabers</button>
+  </div>
+  
