@@ -165,5 +165,20 @@ export class BoardComponent {
     } else {
       this.selectedSaberId = saberId;
     }
-}
+  }
+
+  onSubIdSelected(subId: string): void {
+    
+    this.selectedSubIds.add(subId);
+    this.updateCheckboxState();
+  }
+  onSubIdDeselected(subId: string): void {
+    
+    this.selectedSubIds.delete(subId);
+    this.updateCheckboxState();
+  }
+  private updateCheckboxState(): void {
+    
+    this.isCheckboxEnabled = this.selectedSubIds.size > 0;
+  }
 }

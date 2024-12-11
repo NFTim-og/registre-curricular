@@ -16,24 +16,24 @@ describe('BoardComponent', () => {
   });
 
   it('should toggle buttons visibility when clicking English', () => {
-    // Initial state: buttons should not be visible
+    
     let optionsSection = fixture.debugElement.query(By.css('#options-section'));
     expect(optionsSection).toBeNull();
 
-    // Simulate click on English button
+    
     const englishButton = fixture.debugElement.query(By.css('#english-button'));
     englishButton.nativeElement.click();
     fixture.detectChanges();
 
-    // After click: buttons should appear
+    
     optionsSection = fixture.debugElement.query(By.css('#options-section'));
     expect(optionsSection).not.toBeNull();
 
-    // Simulate another click on English button
+    
     englishButton.nativeElement.click();
     fixture.detectChanges();
 
-    // After second click: buttons should disappear
+    
     optionsSection = fixture.debugElement.query(By.css('#options-section'));
     expect(optionsSection).toBeNull();
   });
@@ -61,12 +61,36 @@ describe('BoardComponent', () => {
 
     const sabersButton = fixture.debugElement.query(By.css('#sabers-button'));
     sabersButton.nativeElement.click();
-    fixture.detectChanges();  // Met à jour le DOM après le clic
+    fixture.detectChanges();  
 
     
     const sabersSection = fixture.debugElement.query(By.css('div[id="sabers-section"]'));
     expect(sabersSection).not.toBeNull();
     expect(sabersSection.nativeElement.textContent).toContain('Sabers');
     expect(sabersSection.nativeElement.textContent).toContain('Sabers');
+  });
+  it('should toggle checkbox based on sub-id selection', () => {
+    // Initialement, le checkbox est désactivé
+    expect(component.isCheckboxEnabled).toBeFalse();
+
+    // Sélectionner un sous-id et vérifier que le checkbox est activé
+    component.onSubIdSelected('1.1');
+    fixture.detectChanges();
+    expect(component.isCheckboxEnabled).toBeTrue();
+
+    // Désélectionner le sous-id et vérifier que le checkbox est désactivé
+    component.onSubIdDeselected('1.1');
+    fixture.detectChanges();
+    expect(component.isCheckboxEnabled).toBeFalse();
+
+    // Sélectionner un autre sous-id pour tester la logique
+    component.onSubIdSelected('2.3');
+    fixture.detectChanges();
+    expect(component.isCheckboxEnabled).toBeTrue();
+
+    // Désélectionner ce sous-id et vérifier le retour à l'état désactivé
+    component.onSubIdDeselected('2.3');
+    fixture.detectChanges();
+    expect(component.isCheckboxEnabled).toBeFalse();
   });
 });
