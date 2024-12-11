@@ -1,33 +1,32 @@
-<div id="options-section" *ngIf="isEnglishSelected">
-  <button id="english-button" (click)="onEnglishClick()">English</button>
-  <button id="competences-button" (click)="onCompetencesClick()">Competences</button>
-  <button id="sabers-button" (click)="onSabersClick()">Sabers</button>
-</div>
-
-<div id="display-section" *ngIf="isEnglishSelected">
-  <div *ngIf="competencesData.length > 0">
-      <ul>
-          <li *ngFor="let competence of competencesData">
-              {{ competence.description }}
-              <ul>
-                  <li *ngFor="let criteri of competence.criteris">
-                      {{ criteri.description }}
-                  </li>
-              </ul>
-          </li>
-      </ul>
+<div id="language-selection">
+    <button id="english-button" (click)="onEnglishClick()">
+      {{ isEnglishSelected ? 'Anglais' : 'Anglais' }}
+    </button>
   </div>
-
-  <div *ngIf="sabersData.length > 0">
-      <ul>
-          <li *ngFor="let saber of sabersData">
-              {{ saber.description }}
-              <ul>
-                  <li *ngFor="let subSaber of saber.sabers">
-                      {{ subSaber.description }}
-                  </li>
-              </ul>
-          </li>
-      </ul>
+  
+  <div id="options-section" *ngIf="isEnglishSelected">
+    <button id="competences-button" (click)="onCompetencesClick()">Compétences</button>
+    <button id="sabers-button" (click)="onSabersClick()">Sabers</button>
   </div>
-</div>
+  
+  <div *ngIf="isCompetencesSelected" id="competences-section">
+    <h2>Compétences</h2>
+    <div *ngFor="let competence of competences">
+      <h3>{{ competence.description }}</h3>
+      <div *ngFor="let criterium of competence.criteres">
+        <p>{{ criterium.description }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Affichage des sabers -->
+  <div *ngIf="isSabersSelected" id="sabers-section">
+    <h2>Sabers</h2>
+    <div *ngFor="let category of sabers.categories">
+      <h3>{{ category.name }}</h3>
+      <div *ngFor="let saber of category.sabers">
+        <p>{{ saber.description }}</p>
+      </div>
+    </div>
+  </div>
+  
