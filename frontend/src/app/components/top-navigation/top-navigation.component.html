@@ -1,1 +1,9 @@
-<p>top-navigation works!</p>
+<nav class="top-navigation-bar">
+    <div class="username-section">
+      <span *ngIf="username">{{ username }}</span>
+    </div>
+    <div class="logout-section">
+      <button (click)="logout()">Logout</button>
+    </div>
+  </nav>
+  
