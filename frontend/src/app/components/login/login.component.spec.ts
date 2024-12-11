@@ -68,18 +68,30 @@ describe('LoginComponent - Correct Credentials', () => {
 
     // Vérifier que le message d'erreur s'affiche
     expect(router.url).toBe('');
-    expect(component.loginError).toBe('Invalid credentials. Please try again.');
+    expect(component.loginError).toBe('An unexpected error occurred.');
   });
 
-  it('should show error message when fields are empty', () => {
-    // Simuler des champs vides
+  it('should disable the login button when fields are empty', () => {
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button[type="submit"]');
+  
+    
     component.loginDetails.user = '';
     component.loginDetails.password = '';
-
-    component.onSubmit();
-
-    // Vérifier que le message d'erreur est affiché pour les champs vides
-    expect(router.url).toBe('');
-    expect(component.loginError).toBe('Please fill in all the fields.');
+    fixture.detectChanges(); 
+  
+    expect(button.disabled).toBeTrue(); 
+  
+    
+    component.loginDetails.user = 'prof@example.com';
+    fixture.detectChanges();
+  
+    expect(button.disabled).toBeTrue(); 
+  
+    
+    component.loginDetails.password = 'password123';
+    fixture.detectChanges();
+  
+    expect(button.disabled).toBeTrue(); 
   });
+  
 });

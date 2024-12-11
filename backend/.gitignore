@@ -4,9 +4,6 @@ node_modules/
 # Ignorar los archivos de configuración automática de npm
 package-lock.json
 
-# Ignorar los archivos de entorno
-.env
-
 # Ignorar cualquier archivo de logs
 *.log
 
