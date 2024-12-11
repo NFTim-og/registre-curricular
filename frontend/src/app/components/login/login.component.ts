@@ -35,12 +35,21 @@ export class LoginComponent {
           this.userService.setUsername(this.loginDetails.user); // Set login state
           this.router.navigate(['/listusers']);
         } else {
-          this.loginError = response.message || 'An unexpected error occurred.';
+          this.loginError = response.message || 'An unexpected error occurred.';  // Ceci sera affiché si la connexion échoue
         }
       },
       error: (err) => {
         console.error('Error during login request:', err);
-        this.loginError = 'Server connection failed. Please try again later.';
+
+        // Gérer les erreurs serveur
+        if (err.status === 500) {
+          this.loginError = 'Server connection failed. Please try again later.';
+        } else if (err.status === 401) {
+          // Cela gère les erreurs de type "Invalid credentials" renvoyées par l'API
+          this.loginError = 'Invalid credentials. Please check your username and password.';
+        } else {
+          this.loginError = 'An unexpected error occurred.';  // Message générique pour d'autres erreurs
+        }
       }
     });
   }
