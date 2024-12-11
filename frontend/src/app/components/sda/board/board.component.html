@@ -1,32 +1,27 @@
 <div id="language-selection">
-    <button id="english-button" (click)="onEnglishClick()">
-      {{ isEnglishSelected ? 'Anglais' : 'Anglais' }}
+  <button id="english-button" (click)="onEnglishClick()">
+    {{ isEnglishSelected ? 'Anglais' : 'Anglais' }}
+  </button>
+</div>
+
+<div id="options-section" *ngIf="isEnglishSelected">
+  <button id="competences-button" (click)="onCompetencesClick()">Compétences</button>
+</div>
+
+<!-- Affichage des compétences -->
+<div *ngIf="isCompetencesSelected" id="competences-section">
+  <h2>Compétences</h2>
+  <div *ngFor="let competence of competences">
+    <!-- Affichage de l'ID sous forme de bouton -->
+    <button (click)="onCompetenceIdClick(competence.id)">
+      {{ competence.id }}
     </button>
-  </div>
-  
-  <div id="options-section" *ngIf="isEnglishSelected">
-    <button id="competences-button" (click)="onCompetencesClick()">Compétences</button>
-    <button id="sabers-button" (click)="onSabersClick()">Sabers</button>
-  </div>
-  
-  <div *ngIf="isCompetencesSelected" id="competences-section">
-    <h2>Compétences</h2>
-    <div *ngFor="let competence of competences">
-      <h3>{{ competence.description }}</h3>
+
+    <!-- Affichage des critères lorsque l'ID est sélectionné -->
+    <div *ngIf="selectedCompetenceId === competence.id">
       <div *ngFor="let criterium of competence.criteres">
-        <p>{{ criterium.description }}</p>
+        <p>{{ criterium.id }}: {{ criterium.description }}</p>
       </div>
     </div>
   </div>
-  
-  <!-- Affichage des sabers -->
-  <div *ngIf="isSabersSelected" id="sabers-section">
-    <h2>Sabers</h2>
-    <div *ngFor="let category of sabers.categories">
-      <h3>{{ category.name }}</h3>
-      <div *ngFor="let saber of category.sabers">
-        <p>{{ saber.description }}</p>
-      </div>
-    </div>
-  </div>
-  
+</div>

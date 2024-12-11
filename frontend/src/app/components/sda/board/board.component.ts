@@ -1,20 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
-// Définition des types pour les compétences et les sabers
+// Définition des types pour les compétences et les critères
 type Competence = {
   id: number;
   description: string;
   criteres: { id: string; description: string }[];
 };
-
-type Saber = {
-  id: number;
-  description: string;
-  sabers: { id: string; description: string }[];
-};
-
-type DataItem = Competence | Saber;
 
 @Component({
   selector: 'app-board',
@@ -26,13 +18,12 @@ type DataItem = Competence | Saber;
 export class BoardComponent {
   isEnglishSelected: boolean = false;
   isCompetencesSelected: boolean = false;
-  isSabersSelected: boolean = false;
 
-  // Données exactes de compétences
+  // Données de compétences avec des critères d'évaluation
   competences: Competence[] = [
     {
       id: 1,
-      description: "Prendre consciència de la diversitat lingüística i cultural...",
+      description: "Prendre consciència de la diversitat lingüística et culturelle...",
       criteres: [
         { id: "1.1", description: "Identificar les diferents llengües de l'entorn..." },
         { id: "1.2", description: "Detectar i rebutjar prejudicis i estereotips lingüístics..." },
@@ -57,43 +48,22 @@ export class BoardComponent {
     }
   ];
 
-  // Données exactes de sabers
-  sabers = {
-    categories: [
-      {
-        id: 1,
-        name: "Les llengües i els seus parlants",
-        sabers: [
-          { id: "1.1", description: "Presa de consciència de la diversitat lingüística..." },
-          { id: "1.2", description: "Identificació de prejudicis i estereotips lingüístics..." },
-          { id: "1.3", description: "Ús d’un llenguatge no discriminatori..." }
-        ]
-      },
-      {
-        id: 2,
-        name: "Comunicació oral",
-        sabers: [
-          { id: "2.1", description: "Interès per expressar-se oralment..." },
-          { id: "2.2", description: "Comprensió de textos orals..." },
-          { id: "2.3", description: "Identificació de la incidència dels components..." },
-          { id: "2.4", description: "Aplicació d’estratègies lingüístiques elementals..." },
-          { id: "2.5", description: "Identificació d’elements bàsics de contingut..." }
-        ]
-      }
-    ]
-  };
+  selectedCompetenceId: number | null = null; // Stocke l'ID de la compétence sélectionnée
 
   onEnglishClick(): void {
-    this.isEnglishSelected = !this.isEnglishSelected; // Toggle the display
+    this.isEnglishSelected = !this.isEnglishSelected; // Toggle l'affichage
   }
 
   onCompetencesClick(): void {
-    this.isCompetencesSelected = true;
-    this.isSabersSelected = false; // Hide sabers when showing competences
+    this.isCompetencesSelected = true; // Affiche les compétences
   }
 
-  onSabersClick(): void {
-    this.isCompetencesSelected = false; // Hide competences when showing sabers
-    this.isSabersSelected = true;
+  onCompetenceIdClick(competenceId: number): void {
+    // Si l'ID est déjà sélectionné, on le désélectionne
+    if (this.selectedCompetenceId === competenceId) {
+      this.selectedCompetenceId = null;
+    } else {
+      this.selectedCompetenceId = competenceId; // Sélectionne la compétence
+    }
   }
 }
