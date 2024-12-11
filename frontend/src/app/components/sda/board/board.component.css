@@ -12,7 +12,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-bottom: 10px; /* Espacement entre les boutons */
+  margin-bottom: 10px;
 }
 
 button:hover {
@@ -24,15 +24,6 @@ button:hover {
   color: white;
   border: none;
   border-radius: 5px;
-}
-
-h2, h3 {
-  color: #333;
-}
-
-p {
-  font-size: 14px;
-  color: #555;
 }
 
 #competences-section button {
@@ -52,4 +43,34 @@ p {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
+}
+
+#sabers-section {
+  margin-top: 20px;
+}
+
+#sabers-section h2 {
+  color: #333;
+  font-size: 24px;
+}
+
+#sabers-section h3 {
+  color: #4caf50;
+  font-size: 20px;
+}
+
+#sabers-section p {
+  color: #555;
+  font-size: 16px;
+}
+
+#sabers-section button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+#sabers-section button:hover {
+  background-color: #d84315;
 }

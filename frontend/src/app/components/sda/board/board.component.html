@@ -6,18 +6,17 @@
 
 <div id="options-section" *ngIf="isEnglishSelected">
   <button id="competences-button" (click)="onCompetencesClick()">Compétences</button>
+  <button id="sabers-button" (click)="onSabersClick()">Sabers</button>
 </div>
 
 <!-- Affichage des compétences -->
 <div *ngIf="isCompetencesSelected" id="competences-section">
   <h2>Compétences</h2>
   <div *ngFor="let competence of competences">
-    <!-- Affichage de l'ID sous forme de bouton -->
     <button (click)="onCompetenceIdClick(competence.id)">
       {{ competence.id }}
     </button>
 
-    <!-- Affichage des critères lorsque l'ID est sélectionné -->
     <div *ngIf="selectedCompetenceId === competence.id">
       <div *ngFor="let criterium of competence.criteres">
         <p>{{ criterium.id }}: {{ criterium.description }}</p>
@@ -25,3 +24,22 @@
     </div>
   </div>
 </div>
+
+<!-- Affichage des sabers sous les catégories -->
+<div *ngIf="isSabersSelected" id="sabers-section">
+  <h2>Sabers</h2>
+  <div *ngFor="let category of categories">
+    <h3>{{ category.name }}</h3>
+    <div *ngFor="let saber of category.sabers">
+      <button (click)="onSaberIdClick(saber.id)">
+        {{ saber.id }}
+      </button>
+
+     
+      <div *ngIf="selectedSaberId === saber.id">
+        <p>{{ saber.id }}: {{ saber.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
