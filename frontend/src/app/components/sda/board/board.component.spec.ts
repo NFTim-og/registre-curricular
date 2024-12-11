@@ -55,18 +55,18 @@ describe('BoardComponent', () => {
   });
   
 
-  // it('should display saber data when clicking Sabers button', () => {
-  //   component.isEnglishSelected = true;
-  //   fixture.detectChanges();
+  it('should display saber data when clicking Sabers button', () => {
+    component.isEnglishSelected = true;
+    fixture.detectChanges();
 
-  //   const sabersButton = fixture.debugElement.query(By.css('#sabers-button'));
-  //   sabersButton.nativeElement.click();
-  //   fixture.detectChanges();  // Met à jour le DOM après le clic
+    const sabersButton = fixture.debugElement.query(By.css('#sabers-button'));
+    sabersButton.nativeElement.click();
+    fixture.detectChanges();  // Met à jour le DOM après le clic
 
-  //   // Vérifier que la section des sabers s'affiche
-  //   const sabersSection = fixture.debugElement.query(By.css('div[id="sabers-section"]'));
-  //   expect(sabersSection).not.toBeNull();
-  //   expect(sabersSection.nativeElement.textContent).toContain('Presa de consciència de la diversitat lingüística');
-  //   expect(sabersSection.nativeElement.textContent).toContain('Interès per expressar-se oralment');
-  // });
+    // Vérifier que la section des sabers s'affiche
+    const sabersSection = fixture.debugElement.query(By.css('div[id="sabers-section"]'));
+    expect(sabersSection).not.toBeNull();
+    expect(sabersSection.nativeElement.textContent).toContain('Presa de consciència de la diversitat lingüística');
+    expect(sabersSection.nativeElement.textContent).toContain('Interès per expressar-se oralment');
+  });
 });
