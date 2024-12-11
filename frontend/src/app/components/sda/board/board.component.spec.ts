@@ -69,28 +69,27 @@ describe('BoardComponent', () => {
     expect(sabersSection.nativeElement.textContent).toContain('Sabers');
     expect(sabersSection.nativeElement.textContent).toContain('Sabers');
   });
-  it('should toggle checkbox based on sub-id selection', () => {
-    // Initialement, le checkbox est désactivé
-    expect(component.isCheckboxEnabled).toBeFalse();
-
-    // Sélectionner un sous-id et vérifier que le checkbox est activé
-    component.onSubIdSelected('1.1');
+  it('should toggle competence checkbox based on criteria selection', () => {
+    
+    expect(component.isCompetenceCheckboxEnabled(1)).toBeFalse();  
+  
+   
+    component.onCriterionSelected('1.1');  
     fixture.detectChanges();
-    expect(component.isCheckboxEnabled).toBeTrue();
-
-    // Désélectionner le sous-id et vérifier que le checkbox est désactivé
-    component.onSubIdDeselected('1.1');
+    expect(component.isCompetenceCheckboxEnabled(1)).toBeTrue();  
+    
+    component.onCriterionDeselected('1.1');  
     fixture.detectChanges();
-    expect(component.isCheckboxEnabled).toBeFalse();
-
-    // Sélectionner un autre sous-id pour tester la logique
-    component.onSubIdSelected('2.3');
+    expect(component.isCompetenceCheckboxEnabled(1)).toBeFalse();  
+    
+    component.onCriterionSelected('1.2');  
     fixture.detectChanges();
-    expect(component.isCheckboxEnabled).toBeTrue();
-
-    // Désélectionner ce sous-id et vérifier le retour à l'état désactivé
-    component.onSubIdDeselected('2.3');
+    expect(component.isCompetenceCheckboxEnabled(1)).toBeTrue();   
+  
+    
+    component.onCriterionDeselected('1.2');  
     fixture.detectChanges();
-    expect(component.isCheckboxEnabled).toBeFalse();
+    expect(component.isCompetenceCheckboxEnabled(1)).toBeFalse();  
   });
+  
 });

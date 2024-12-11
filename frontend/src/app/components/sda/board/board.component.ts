@@ -126,9 +126,10 @@ export class BoardComponent {
       }
     ];
 
-  
-  selectedCompetenceId: number | null = null; // Stocke l'ID de la compétence sélectionnée
-  selectedSaberId: string | null = null;
+    selectedCriterionIds: Set<string> = new Set();
+
+    selectedCompetenceId: number | null = null; // Stocke l'ID de la compétence sélectionnée
+    selectedSaberId: string | null = null;
 
   onEnglishClick(): void {
     
@@ -167,18 +168,43 @@ export class BoardComponent {
     }
   }
 
-  onSubIdSelected(subId: string): void {
+  isCompetenceCheckboxEnabled(competenceId: number): boolean {
+    const competence = this.competences.find(comp => comp.id === competenceId);
+    if (!competence) return false;
+
     
-    this.selectedSubIds.add(subId);
-    this.updateCheckboxState();
+    return competence.criteres.some(criterium => this.selectedCriterionIds.has(criterium.id));
   }
-  onSubIdDeselected(subId: string): void {
-    
-    this.selectedSubIds.delete(subId);
-    this.updateCheckboxState();
+
+  onCriterionSelected(criterionId: string): void {
+    this.selectedCriterionIds.add(criterionId);
   }
-  private updateCheckboxState(): void {
-    
-    this.isCheckboxEnabled = this.selectedSubIds.size > 0;
+
+  onCriterionDeselected(criterionId: string): void {
+    this.selectedCriterionIds.delete(criterionId);
+  }
+
+  isCompetenceSelected(): boolean {
+    return this.selectedCompetenceId !== null;
+  }
+
+  isSaberSelected(): boolean {
+    return this.selectedSaberId !== null;
+  }
+
+  onCompetenceCheckboxChange(competenceId: number): void {
+    if (this.selectedCompetenceId === competenceId) {
+      this.selectedCompetenceId = null;
+    } else {
+      this.selectedCompetenceId = competenceId;
+    }
+  }
+
+  onSaberCheckboxChange(saberId: string): void {
+    if (this.selectedSaberId === saberId) {
+      this.selectedSaberId = null;
+    } else {
+      this.selectedSaberId = saberId;
+    }
   }
 }

@@ -13,6 +13,10 @@
 <div *ngIf="isCompetencesSelected" id="competences-section">
   <h2>Compétences</h2>
   <div *ngFor="let competence of competences">
+    <label>
+      <input type="checkbox" [checked]="selectedCompetenceId === competence.id" (change)="onCompetenceCheckboxChange(competence.id)" />
+      {{ competence.id }}
+    </label>
     <button (click)="onCompetenceIdClick(competence.id)">
       {{ competence.id }}
     </button>
@@ -31,15 +35,17 @@
   <div *ngFor="let category of categories">
     <h3>{{ category.name }}</h3>
     <div *ngFor="let saber of category.sabers">
+      <label>
+        <input type="checkbox" [checked]="selectedSaberId === saber.id" (change)="onSaberCheckboxChange(saber.id)" />
+        {{ saber.id }}
+      </label>
       <button (click)="onSaberIdClick(saber.id)">
         {{ saber.id }}
       </button>
 
-     
       <div *ngIf="selectedSaberId === saber.id">
         <p>{{ saber.id }}: {{ saber.description }}</p>
       </div>
     </div>
   </div>
 </div>
-
