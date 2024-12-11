@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { SdALoginService } from './sda-login.service';
+import { SdALoginService } from './login.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';  
 
 describe('SdALoginService', () => {

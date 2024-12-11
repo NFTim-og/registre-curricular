@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SdALoginService } from '../../core/services/sda-login.service';
+import { SdALoginService } from '../../core/services/login/login.service';
 import { Router } from '@angular/router';
 
 @Component({

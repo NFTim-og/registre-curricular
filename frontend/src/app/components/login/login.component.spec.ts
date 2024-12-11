@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
-import { SdALoginService } from '../../core/services/sda-login.service';
+import { SdALoginService } from '../../core/services/login/login.service';
 import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 
@@ -28,7 +28,7 @@ class MockLoginService {
   }
 }
 
-describe('SdALoginComponent - Correct Credentials', () => {
+describe('LoginComponent - Correct Credentials', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let router: MockRouter;
@@ -80,6 +80,6 @@ describe('SdALoginComponent - Correct Credentials', () => {
 
     // Vérifier que le message d'erreur est affiché pour les champs vides
     expect(router.url).toBe('');
-    expect(component.loginError).toBe('Please fill in the fields.');
+    expect(component.loginError).toBe('Please fill in all the fields.');
   });
 });
