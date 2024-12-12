@@ -45,9 +45,11 @@
 
 .side-navigation-bar li:hover,
 .side-navigation-bar li.active {
-    background-color: #d2d2d2;
+    background-color: #bbe8ff;
     transform: scale(1.05);
+    color: #003366;
 }
+
 
 .side-navigation-bar button.courses-toggle {
     background-color: transparent;
@@ -62,8 +64,9 @@
 }
 
 .side-navigation-bar button.courses-toggle:hover {
-    background-color: #dedede;
+    background-color: #bbe8ff;
     transform: scale(1.05);
+    color: #003366;
 }
 
 .side-navigation-bar .subsections {
