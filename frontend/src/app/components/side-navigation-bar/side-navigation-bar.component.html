@@ -1,14 +1,28 @@
 <nav class="side-navigation-bar">
   <h1 class="title">EduApp</h1>
   <ul>
-    <li routerLink="/visio-general" routerLinkActive="active">Visió General</li>
-    <button class="courses-toggle" (click)="toggleCourses()">Els Meus Cursos</button>
+    <li routerLink="/visio-general" routerLinkActive="active">
+      <i class="fas fa-tachometer-alt"></i> Visió General
+    </li>
+    <button class="courses-toggle" (click)="toggleCourses()">
+      <i class="fas fa-book"></i> Els Meus Cursos
+    </button>
     <ul *ngIf="isCoursesExpanded" class="subsections">
-      <li routerLink="/els-meus-cursos/1er-2on" routerLinkActive="active">1er/2on</li>
-      <li routerLink="/els-meus-cursos/3er-4rt" routerLinkActive="active">3er/4rt</li>
-      <li routerLink="/els-meus-cursos/5e-6e" routerLinkActive="active">5e/6e</li>
+      <li routerLink="/els-meus-cursos/1er-2on" routerLinkActive="active">
+        <i class="fas fa-graduation-cap"></i> 1er/2on
+      </li>
+      <li routerLink="/els-meus-cursos/3er-4rt" routerLinkActive="active">
+        <i class="fas fa-graduation-cap"></i> 3er/4rt
+      </li>
+      <li routerLink="/els-meus-cursos/5e-6e" routerLinkActive="active">
+        <i class="fas fa-graduation-cap"></i> 5e/6e
+      </li>
     </ul>
-    <li routerLink="/sdas-compartides" routerLinkActive="active">SdAs Compartides</li>
-    <li routerLink="/configuracio" routerLinkActive="active">Configuració</li>
+    <li routerLink="/sdas-compartides" routerLinkActive="active">
+      <i class="fas fa-share-alt"></i> SdAs Compartides
+    </li>
+    <li routerLink="/configuracio" routerLinkActive="active">
+      <i class="fas fa-cog"></i> Configuració
+    </li>
   </ul>
 </nav>

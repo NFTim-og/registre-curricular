@@ -1,10 +1,13 @@
 <nav class="top-navigation-bar">
   <div class="right-section">
     <div class="username-section">
+      <i class="fas fa-user-circle"></i>
       <span *ngIf="username">{{ username }}</span>
     </div>
     <div class="logout-section">
-      <button (click)="logout()">Tancar Sessió</button>
+      <button (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Tancar Sessió
+      </button>
     </div>
   </div>
 </nav>

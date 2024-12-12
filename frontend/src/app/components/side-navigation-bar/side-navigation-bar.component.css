@@ -1,57 +1,71 @@
 .side-navigation-bar {
-    background-color: #f3f3f3;
-    color: rgb(0, 0, 0);
-    width: 200px;
+    background: #f2f2f2;
+    color: #000000;
+    width: 220px;
     height: 100%;
     position: fixed;
     left: 0;
     top: 0;
     padding: 20px;
     box-sizing: border-box;
-  }
-  
-  .side-navigation-bar .title {
+    font-family: Arial, sans-serif;
+}
+
+.side-navigation-bar .title {
     font-size: 1.5em;
-    margin-bottom: 20px;
-  }
-  
-  .side-navigation-bar ul {
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.side-navigation-bar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-  
-  .side-navigation-bar li {
-    font-size: 1.1em;
-    padding: 5px 10px;
-    border-radius: 5px;
+    gap: 15px;
+}
+
+.side-navigation-bar li {
+    font-size: 1em;
+    padding: 10px 15px;
+    border-radius: 8px;
     cursor: pointer;
-  }
-  
-  .side-navigation-bar li:hover,
-  .side-navigation-bar li.active {
-    background-color: #aeaeae;
-  }
-  
-  .side-navigation-bar button.courses-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.side-navigation-bar li i {
+    font-size: 1em;
+}
+
+.side-navigation-bar li:hover,
+.side-navigation-bar li.active {
+    background-color: #d2d2d2;
+    transform: scale(1.05);
+}
+
+.side-navigation-bar button.courses-toggle {
     background-color: transparent;
     border: none;
-    color: rgb(0, 0, 0);
-    font-size: 1.1em;
-    padding: 5px 10px;
-    border-radius: 5px;
+    color: #000000;
+    font-size: 1em;
+    padding: 10px 15px;
+    border-radius: 8px;
     cursor: pointer;
-    width: 100%;
     text-align: left;
-  }
-  
-  .side-navigation-bar button.courses-toggle:hover {
-    background-color: #aeaeae;
-  }
-  
-  .side-navigation-bar .subsections {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.side-navigation-bar button.courses-toggle:hover {
+    background-color: #dedede;
+    transform: scale(1.05);
+}
+
+.side-navigation-bar .subsections {
     margin-left: 20px;
-  }
+}
