@@ -94,4 +94,22 @@ describe('LoginComponent - Correct Credentials', () => {
     expect(button.disabled).toBeTrue(); 
   });
   
+  it('should generate a token and redirect to /listusers on correct credentials', () => {
+    const mockResponse = { success: true, token: 'mock.jwt.token' };
+    spyOn(component['loginService'], 'login').and.returnValue(of(mockResponse));
+    spyOn(component['userService'], 'setUsername');
+    spyOn(component['router'], 'navigate');
+  
+    component.loginDetails.user = 'prof@example.com';
+    component.loginDetails.password = 'password123';
+    
+    component.onSubmit();
+  
+    
+    expect(component['loginService'].login).toHaveBeenCalledWith('prof@example.com', 'password123');
+    expect(component['userService'].setUsername).toHaveBeenCalledWith('prof@example.com');
+    expect(component['router'].navigate).toHaveBeenCalledWith(['/listusers']);
+    expect(component.loginError).toBeNull();
+  });
+  
 });
