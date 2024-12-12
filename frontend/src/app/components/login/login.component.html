@@ -30,6 +30,7 @@
       class="btn" 
       [disabled]="loginForm.invalid"
     >
+    <span *ngIf="isLoading" class="spinner"></span>
       Log In
     </button>
   </form>
