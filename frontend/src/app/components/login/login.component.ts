@@ -10,11 +10,12 @@ import { UserService } from '../../core/services/user/user.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginDetails = { user: '', password: '' };
   loginError: string | null = null;
+  isLoading = false;
 
   constructor(
     private loginService: SdALoginService,
@@ -28,29 +29,40 @@ export class LoginComponent {
       return;
     }
 
+    // Début du chargement
+    this.isLoading = true;
+    this.loginError = null;
+
+    // Appel au service de connexion
     this.loginService.login(this.loginDetails.user, this.loginDetails.password).subscribe({
       next: (response) => {
+
+        this.isLoading = false;
+
         if (response.success) {
-          this.loginError = null;
-          this.userService.setUsername(this.loginDetails.user); // Set login state
+          localStorage.setItem('authToken', response.token);
+          console.log(localStorage.getItem("authToken"));
+          this.userService.setUsername(this.loginDetails.user);
           this.router.navigate(['/listusers']);
         } else {
-          this.loginError = response.message || 'An unexpected error occurred.';  // Ceci sera affiché si la connexion échoue
+          this.loginError = response.message || 'An unexpected error occurred.';
         }
       },
       error: (err) => {
+        
+        this.isLoading = false;
+
         console.error('Error during login request:', err);
 
-        // Gérer les erreurs serveur
+        
         if (err.status === 500) {
           this.loginError = 'Server connection failed. Please try again later.';
         } else if (err.status === 401) {
-          // Cela gère les erreurs de type "Invalid credentials" renvoyées par l'API
           this.loginError = 'Invalid credentials. Please check your username and password.';
         } else {
-          this.loginError = 'An unexpected error occurred.';  // Message générique pour d'autres erreurs
+          this.loginError = 'An unexpected error occurred.';
         }
-      }
+      },
     });
   }
 }
