@@ -1,13 +1,14 @@
-<h1 class="title">EduApp</h1>
-<ul>
-    <li class="general">Visió General</li>
-    <button class="courses-toggle" (click)="toggleCourses()">Els meus Cursos</button>
+<nav class="side-navigation-bar">
+  <h1 class="title">EduApp</h1>
+  <ul>
+    <li routerLink="/visio-general" routerLinkActive="active">Visió General</li>
+    <button class="courses-toggle" (click)="toggleCourses()">Els Meus Cursos</button>
     <ul *ngIf="isCoursesExpanded" class="subsections">
-      <li>1er/2on</li>
-      <li>3er/4rt</li>
-      <li>5e/6e</li>
+      <li routerLink="/els-meus-cursos/1er-2on" routerLinkActive="active">1er/2on</li>
+      <li routerLink="/els-meus-cursos/3er-4rt" routerLinkActive="active">3er/4rt</li>
+      <li routerLink="/els-meus-cursos/5e-6e" routerLinkActive="active">5e/6e</li>
     </ul>
-    <li class="shared">SdAs Compartides</li>
-    <li class="settings">Configuració</li>
-</ul>
-  
+    <li routerLink="/sdas-compartides" routerLinkActive="active">SdAs Compartides</li>
+    <li routerLink="/configuracio" routerLinkActive="active">Configuració</li>
+  </ul>
+</nav>
