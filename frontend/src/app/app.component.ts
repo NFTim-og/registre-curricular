@@ -20,6 +20,6 @@ export class AppComponent {
   constructor(private userService: UserService) {}
 
   isLoggedIn(): boolean {
-    return this.userService.isLoggedIn(); // Check login state from the UserService
+    return this.userService.isLoggedIn(); 
   }
 }
