@@ -128,7 +128,7 @@ export class BoardComponent {
 
     selectedCriterionIds: Set<string> = new Set();
 
-    selectedCompetenceId: number | null = null; // Stocke l'ID de la compétence sélectionnée
+    selectedCompetenceId: number | null = null; 
     selectedSaberId: string | null = null;
 
   onEnglishClick(): void {

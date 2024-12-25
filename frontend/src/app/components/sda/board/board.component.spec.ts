@@ -91,5 +91,7 @@ describe('BoardComponent', () => {
     fixture.detectChanges();
     expect(component.isCompetenceCheckboxEnabled(1)).toBeFalse();  
   });
+
+  
   
 });
