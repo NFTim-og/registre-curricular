@@ -11,6 +11,7 @@ describe('BoardComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(BoardComponent);
+    
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
