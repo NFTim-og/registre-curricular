@@ -25,8 +25,10 @@ export class TopNavigationComponent implements OnInit {
   }
 
   logout(): void {
-    this.userService.clearUsername();
-    console.log('User logged out');
-    this.router.navigate(['/login']);
+    this.userService.logout().subscribe(() => {
+      this.userService.clearUsername();
+      console.log('User logged out');
+      this.router.navigate(['/login']);
+    });
   }
 }

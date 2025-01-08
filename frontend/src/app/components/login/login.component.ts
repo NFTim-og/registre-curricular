@@ -12,6 +12,7 @@ import { UserService } from '../../core/services/user/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent {
   loginDetails = { user: '', password: '' };
   loginError: string | null = null;
@@ -29,11 +30,9 @@ export class LoginComponent {
       return;
     }
 
-    // Début du chargement
     this.isLoading = true;
     this.loginError = null;
 
-    // Appel au service de connexion
     this.loginService.login(this.loginDetails.user, this.loginDetails.password).subscribe({
       next: (response) => {
 
