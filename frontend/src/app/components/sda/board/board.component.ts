@@ -9,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './board.component.css'
 })
 export class BoardComponent {
-  subjects: string[] = [];
+  subjects: string[] = [
+    'English', 'Math', 'Science', 'History', 'Geography',
+    'Art', 'Music', 'Physical Education', 'French', 'Computer Science',
+  ];
+  selectedSubject: string | null = null;
+
+  toggleSubject(subject: string): void {
+    this.selectedSubject = this.selectedSubject === subject ? null : subject;
+  }
 }

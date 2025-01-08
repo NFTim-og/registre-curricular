@@ -1,1 +1,14 @@
-<p>board works!</p>
+<p></p>
+<div class="subjects">
+  <button 
+    *ngFor="let subject of subjects" 
+    class="subject-button"
+    (click)="toggleSubject(subject)">
+    {{ subject }}
+  </button>
+</div>
+<div *ngIf="selectedSubject" class="options-section">
+    <h3>Options for {{ selectedSubject }}</h3>
+    <button class="competences-button">Competences</button>
+    <button class="sabers-button">Sabers</button>
+  </div>
