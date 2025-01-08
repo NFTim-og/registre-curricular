@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BoardComponent } from './board.component';
+import mockData from '../../../../assets/mockData.json';
 
 describe('BoardComponent - Subjects as Buttons', () => {
   let component: BoardComponent;
@@ -72,4 +73,32 @@ describe('BoardComponent - Subjects as Buttons', () => {
     expect(competencesButton.nativeElement.textContent).toContain('Competences');
     expect(sabersButton.nativeElement.textContent).toContain('Sabers');
   });
+
+  describe('Mock Data Test', () => {
+    it('should contain competences with correct structure and data', () => {
+      const competences = mockData.competences;
+      
+      expect(competences.length).toBe(10); 
+      expect(competences[0].id).toBeDefined(); 
+      expect(competences[0].competencia).toBeDefined(); 
+      expect(competences[0].criteris.length).toBe(3); 
+      expect(competences[0].criteris[0].id).toBeDefined(); 
+      expect(competences[0].criteris[0].description).toBeDefined(); 
+      
+      // Vérification de l'indicateur de la première sous-compétence
+      expect(competences[0].criteris[0].indicateurs).toContain("Descripció d'algunes expressions d'ús quotidià");
+    });
+  
+    it('should contain sabers with correct structure and data', () => {
+      const sabers = mockData.sabers;
+  
+      expect(sabers.length).toBe(5); 
+      expect(sabers[0].id).toBeDefined(); 
+      expect(sabers[0].saber).toBeDefined(); 
+      expect(sabers[0].sabers.length).toBe(2); 
+      expect(sabers[0].sabers[0].id).toBeDefined(); 
+      expect(sabers[0].sabers[0].description).toBeDefined(); 
+    });
+  });
+  
 });
