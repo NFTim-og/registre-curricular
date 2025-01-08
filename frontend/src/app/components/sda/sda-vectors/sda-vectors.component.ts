@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-sda-vectors',
   imports: [],
+  standalone: true,
   templateUrl: './sda-vectors.component.html',
   styleUrl: './sda-vectors.component.css'
 })

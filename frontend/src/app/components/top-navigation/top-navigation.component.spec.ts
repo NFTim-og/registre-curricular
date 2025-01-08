@@ -11,7 +11,7 @@ describe('TopNavigationComponent', () => {
   let routerMock: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    userServiceMock = jasmine.createSpyObj('UserService', ['clearUsername'], {
+    userServiceMock = jasmine.createSpyObj('UserService', ['clearUsername', 'logout'], {
       username$: of('TestUser'),
     });
     routerMock = jasmine.createSpyObj('Router', ['navigate']);
@@ -37,9 +37,12 @@ describe('TopNavigationComponent', () => {
     expect(component.username).toBe('TestUser');
   });
 
-  it('should call clearUsername and redirect on logout', () => {
+  it('should call logout, clearUsername, and redirect on logout', () => {
+    userServiceMock.logout.and.returnValue(of(null));
+
     component.logout();
 
+    expect(userServiceMock.logout).toHaveBeenCalled();
     expect(userServiceMock.clearUsername).toHaveBeenCalled();
     expect(routerMock.navigate).toHaveBeenCalledWith(['/login']);
   });
