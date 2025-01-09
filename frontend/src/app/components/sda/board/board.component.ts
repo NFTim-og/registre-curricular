@@ -12,6 +12,16 @@ interface Competence {
   }[];
 }
 
+interface Saber {
+  id: number;
+  saber: string;
+  sabers: {
+    id: number;
+    description: string;
+    indicateurs: string[];
+  }[];
+}
+
 @Component({
   selector: 'app-board',
   standalone: true,
@@ -27,6 +37,8 @@ export class BoardComponent {
   selectedSubject: string | null = null;
   competencesData: Competence[] = [];
   showCompetencesSection = false;
+  sabersData: Saber[] = [];  
+  showSabersSection = false;
 
   toggleSubject(subject: string): void {
     this.selectedSubject = this.selectedSubject === subject ? null : subject;
@@ -40,8 +52,15 @@ export class BoardComponent {
     }
   }
 
+  showSabers(): void {
+    this.showSabersSection = true;
+    if (this.selectedSubject) {
+      this.sabersData = mockData.sabers.filter(saber => saber.saber.includes(this.selectedSubject!));
+    }
+  }
+
   private resetData(): void {
     this.competencesData = [];
-    
+    this.sabersData = [];
   }
 }
