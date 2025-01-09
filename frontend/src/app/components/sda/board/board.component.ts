@@ -52,28 +52,38 @@ export class BoardComponent implements OnInit{
   }
 
   showCompetences(): void {
-    this.showCompetencesSection = true;
-    this.showSabersSection = false;
-
-    const subject = this.selectedSubject;
-    if (subject && subject.trim() !== "") {
-      this.competencesData = mockData.competences.filter(competence =>
-        competence.subject.toLowerCase() === subject.toLowerCase()
-      );
+    if (this.showCompetencesSection) {
+      this.showCompetencesSection = false;
+      this.competencesData = [];  
+    } else {
+      this.showCompetencesSection = true;
+      this.showSabersSection = false;
+      
+      const subject = this.selectedSubject;
+      if (subject && subject.trim() !== "") {
+        this.competencesData = mockData.competences.filter(competence =>
+          competence.subject.toLowerCase() === subject.toLowerCase()
+        );
+      }
     }
   }
   
   
 
   showSabers(): void {
-    this.showSabersSection = true;
-    this.showCompetencesSection = false; 
-
-    const subject = this.selectedSubject;
-    if (subject && subject.trim() !== "") {
-      this.sabersData = mockData.sabers.filter(saber => 
-        saber.subject.toLowerCase() === subject.toLowerCase()
-      );
+    if (this.showSabersSection) {
+      this.showSabersSection = false;
+      this.sabersData = [];  
+    } else {
+      this.showSabersSection = true;
+      this.showCompetencesSection = false;
+  
+      const subject = this.selectedSubject;
+      if (subject && subject.trim() !== "") {
+        this.sabersData = mockData.sabers.filter(saber => 
+          saber.subject.toLowerCase() === subject.toLowerCase()
+        );
+      }
     }
   }
 
