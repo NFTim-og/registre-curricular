@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import mockData from '../../../../assets/mockData.json';
 
 interface Competence {
   id: number;
   competencia: string;
+  subject: string;
   criteris: {
     id: number;
     description: string;
@@ -15,6 +16,7 @@ interface Competence {
 interface Saber {
   id: number;
   saber: string;
+  subject: string;
   sabers: {
     id: number;
     description: string;
@@ -29,16 +31,20 @@ interface Saber {
   templateUrl: './board.component.html',
   styleUrl: './board.component.css'
 })
-export class BoardComponent {
+export class BoardComponent implements OnInit{
   subjects: string[] = [
-    'English', 'Math', 'Science', 'History', 'Geography',
-    'Art', 'Music', 'Physical Education', 'French', 'Computer Science',
+    'Llengua Catalana', 'Llengua Estrangera', 'Matemàtiques', 'Coneixement del medi natural, social i cultural', 'Educació Artística','Educació Física', 'Educació en valors cívics i ètics', 'Competència ciutadana (CC)', 'Competència emprenedora (CE)', 'Competència digital (CD)',
   ];
   selectedSubject: string | null = null;
   competencesData: Competence[] = [];
   showCompetencesSection = false;
   sabersData: Saber[] = [];  
   showSabersSection = false;
+
+  ngOnInit(): void {
+    this.competencesData = mockData.competences;
+    this.sabersData = mockData.sabers;
+  }
 
   toggleSubject(subject: string): void {
     this.selectedSubject = this.selectedSubject === subject ? null : subject;
@@ -47,15 +53,27 @@ export class BoardComponent {
 
   showCompetences(): void {
     this.showCompetencesSection = true;
-    if (this.selectedSubject) {
-      this.competencesData = mockData.competences.filter(comp => comp.competencia.includes(this.selectedSubject!));
+    this.showSabersSection = false;
+
+    const subject = this.selectedSubject;
+    if (subject && subject.trim() !== "") {
+      this.competencesData = mockData.competences.filter(competence =>
+        competence.subject.toLowerCase() === subject.toLowerCase()
+      );
     }
   }
+  
+  
 
   showSabers(): void {
     this.showSabersSection = true;
-    if (this.selectedSubject) {
-      this.sabersData = mockData.sabers.filter(saber => saber.saber.includes(this.selectedSubject!));
+    this.showCompetencesSection = false; 
+
+    const subject = this.selectedSubject;
+    if (subject && subject.trim() !== "") {
+      this.sabersData = mockData.sabers.filter(saber => 
+        saber.subject.toLowerCase() === subject.toLowerCase()
+      );
     }
   }
 

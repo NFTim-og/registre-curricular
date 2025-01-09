@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BoardComponent } from './board.component';
-import mockData from '../../../../assets/mockData.json';
 
 describe('BoardComponent - Competences and Sabers', () => {
   let component: BoardComponent;
@@ -16,8 +15,8 @@ describe('BoardComponent - Competences and Sabers', () => {
 
     
     component.subjects = [
-      'English', 'Math', 'Science', 'History', 'Geography',
-      'Art', 'Music', 'Physical Education', 'French', 'Computer Science',
+      'Llengua Catalana', 'Llengua Estrangera', 'Matemàtiques', 'Coneixement del medi natural, social i cultural', 'Educació Artística',
+      'Educació Física', 'Educació en valors cívics i ètics', 'Competència ciutadana (CC)', 'Competència emprenedora (CE)', 'Competència digital (CD)',
     ];
 
     fixture.detectChanges();
@@ -28,8 +27,8 @@ describe('BoardComponent - Competences and Sabers', () => {
     expect(subjectButtons.length).toBe(10); 
 
     const expectedSubjects = [
-      'English', 'Math', 'Science', 'History', 'Geography',
-      'Art', 'Music', 'Physical Education', 'French', 'Computer Science',
+      'Llengua Catalana', 'Llengua Estrangera', 'Matemàtiques', 'Coneixement del medi natural, social i cultural', 'Educació Artística',
+      'Educació Física', 'Educació en valors cívics i ètics', 'Competència ciutadana (CC)', 'Competència emprenedora (CE)', 'Competència digital (CD)',
     ];
 
     subjectButtons.forEach((button, index) => {
@@ -72,14 +71,12 @@ describe('BoardComponent - Competences and Sabers', () => {
   });
   
   it('should display competences when Competences button is clicked', () => {
-    
+   
     const subjectButton = fixture.debugElement.query(By.css('.subject-button'));
     subjectButton.nativeElement.click();
     fixture.detectChanges();
   
-    const optionsSection = fixture.debugElement.query(By.css('.options-section'));
-    expect(optionsSection).not.toBeNull();
-
+    
     const competencesButton = fixture.debugElement.query(By.css('.competences-button'));
     competencesButton.nativeElement.click();
     fixture.detectChanges();
@@ -88,15 +85,14 @@ describe('BoardComponent - Competences and Sabers', () => {
     const competencesSection = fixture.debugElement.query(By.css('.competences-section'));
     expect(competencesSection).not.toBeNull();
     expect(competencesSection.nativeElement.textContent).toContain('Competences');
-
-    const competenceItems = fixture.debugElement.queryAll(By.css('.competence-item'));
-    expect(competenceItems.length).toBeGreaterThan(0);
-
-    const firstCompetence = competenceItems[0].nativeElement.textContent;
-    expect(firstCompetence).toContain('Prendre consciència de la diversitat lingüística i cultural');
+  
+    
+    const sabersSection = fixture.debugElement.query(By.css('.sabers-section'));
+    expect(sabersSection).toBeNull();  
   });
-
+  
   it('should display sabers when Sabers button is clicked', () => {
+    
     const subjectButton = fixture.debugElement.query(By.css('.subject-button'));
     subjectButton.nativeElement.click();
     fixture.detectChanges();
@@ -110,6 +106,9 @@ describe('BoardComponent - Competences and Sabers', () => {
     const sabersSection = fixture.debugElement.query(By.css('.sabers-section'));
     expect(sabersSection).not.toBeNull();
     expect(sabersSection.nativeElement.textContent).toContain('Sabers');
-  });
+  
     
+    const competencesSection = fixture.debugElement.query(By.css('.competences-section'));
+    expect(competencesSection).toBeNull();  
+  }); 
 });

@@ -3,6 +3,7 @@
       {
         "id": 1,
         "competencia": "Prendre consciència de la diversitat lingüística i cultural...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 1.1,
@@ -24,6 +25,7 @@
       {
         "id": 2,
         "competencia": "Comprendre et interpréter des textes oraux et multimodaux...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 2.1,
@@ -40,6 +42,7 @@
       {
         "id": 3,
         "competencia": "Produire des textes oraux et multimodaux avec cohérence...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 3.1,
@@ -51,6 +54,7 @@
       {
         "id": 4,
         "competencia": "Comprendre et interpréter des textes écrits...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 4.1,
@@ -67,6 +71,7 @@
       {
         "id": 5,
         "competencia": "Produire des textes écrits et multimodaux...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 5.1,
@@ -83,6 +88,7 @@
       {
         "id": 6,
         "competencia": "Cercar, seleccionar i contrastar informació...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 6.1,
@@ -94,6 +100,7 @@
       {
         "id": 7,
         "competencia": "Seleccionar i llegir de manera autònoma obres diverses...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 7.1,
@@ -105,6 +112,7 @@
       {
         "id": 8,
         "competencia": "Llegir, interpretar i analitzar obres literàries...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 8.1,
@@ -116,6 +124,7 @@
       {
         "id": 9,
         "competencia": "Reflexionar de forma guiada sobre el llenguatge...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 9.1,
@@ -127,6 +136,7 @@
       {
         "id": 10,
         "competencia": "Utilitzar un llenguatge no discriminatori...",
+        "subject": "Llengua Catalana",
         "criteris": [
           {
             "id": 10.1,
@@ -140,6 +150,7 @@
       {
         "id": 1,
         "saber": "Les llengües i els seus parlants",
+        "subject": "Llengua Catalana",
         "sabers": [
           {
             "id": 1.1,
@@ -156,6 +167,7 @@
       {
         "id": 2,
         "saber": "Comunicació oral",
+        "subject": "Llengua Catalana",
         "sabers": [
           {
             "id": 2.1,
@@ -172,6 +184,7 @@
       {
         "id": 3,
         "saber": "Comprensió lectora",
+        "subject": "Llengua Catalana",
         "sabers": [
           {
             "id": 3.1,
@@ -183,6 +196,7 @@
       {
         "id": 4,
         "saber": "Expressió escrita",
+        "subject": "Llengua Catalana",
         "sabers": [
           {
             "id": 4.1,
@@ -194,6 +208,7 @@
       {
         "id": 5,
         "saber": "Alfabetització informacional",
+        "subject": "Llengua Catalana",
         "sabers": [
           {
             "id": 5.1,
