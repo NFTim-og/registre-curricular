@@ -1,28 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import mockData from '../../../../assets/mockData.json';
 
 interface Competence {
-  id: string;
+  id: number;
   competencia: string;
-  sous_competences: {
-    id: string;
+  criteris: {
+    id: number;
     description: string;
     indicateurs: string[];
   }[];
-}
-
-interface Saber {
-  id: string;
-  saber: string;
-  sous_sabers: {
-    id: string;
-    description: string;
-  }[];
-}
-
-interface MockData {
-  competences: Competence[];
-  sabers: Saber[];
 }
 
 @Component({
@@ -38,10 +25,23 @@ export class BoardComponent {
     'Art', 'Music', 'Physical Education', 'French', 'Computer Science',
   ];
   selectedSubject: string | null = null;
+  competencesData: Competence[] = [];
+  showCompetencesSection = false;
 
   toggleSubject(subject: string): void {
     this.selectedSubject = this.selectedSubject === subject ? null : subject;
+    this.resetData();
   }
 
-  
+  showCompetences(): void {
+    this.showCompetencesSection = true;
+    if (this.selectedSubject) {
+      this.competencesData = mockData.competences.filter(comp => comp.competencia.includes(this.selectedSubject!));
+    }
+  }
+
+  private resetData(): void {
+    this.competencesData = [];
+    
+  }
 }

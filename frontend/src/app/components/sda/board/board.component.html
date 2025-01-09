@@ -9,5 +9,14 @@
 </div>
 <div *ngIf="selectedSubject" class="options-section">
     <h3>Options for {{ selectedSubject }}</h3>
-    <button class="competences-button">Competences</button>
+    <button class="competences-button" (click)="showCompetences()">Competences</button>
     <button class="sabers-button">Sabers</button>
+  </div>
+  
+  
+  <div *ngIf="showCompetencesSection" class="competences-section">
+    <h4>Competences</h4>
+    <div *ngFor="let competence of competencesData">
+      <h5>{{ competence.competencia }}</h5>
+    </div>
+  </div>
