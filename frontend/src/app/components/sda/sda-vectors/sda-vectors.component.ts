@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sda-vectors',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './sda-vectors.component.html',
   styleUrl: './sda-vectors.component.css'
 })

@@ -7,7 +7,7 @@ describe('VectorsChecklistComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SdaVectorsComponent],
+      imports: [SdaVectorsComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SdaVectorsComponent);
