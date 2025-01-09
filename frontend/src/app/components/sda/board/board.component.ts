@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import mockData from '../../../../assets/mockData.json';
 
 interface Competence {
   id: string;
