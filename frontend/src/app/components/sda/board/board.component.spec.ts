@@ -77,7 +77,9 @@ describe('BoardComponent - Competences and Sabers', () => {
     subjectButton.nativeElement.click();
     fixture.detectChanges();
   
-    
+    const optionsSection = fixture.debugElement.query(By.css('.options-section'));
+    expect(optionsSection).not.toBeNull();
+
     const competencesButton = fixture.debugElement.query(By.css('.competences-button'));
     competencesButton.nativeElement.click();
     fixture.detectChanges();
@@ -86,6 +88,12 @@ describe('BoardComponent - Competences and Sabers', () => {
     const competencesSection = fixture.debugElement.query(By.css('.competences-section'));
     expect(competencesSection).not.toBeNull();
     expect(competencesSection.nativeElement.textContent).toContain('Competences');
+
+    const competenceItems = fixture.debugElement.queryAll(By.css('.competence-item'));
+    expect(competenceItems.length).toBeGreaterThan(0);
+
+    const firstCompetence = competenceItems[0].nativeElement.textContent;
+    expect(firstCompetence).toContain('Prendre consciència de la diversitat lingüística i cultural');
   });
 
   it('should display sabers when Sabers button is clicked', () => {
