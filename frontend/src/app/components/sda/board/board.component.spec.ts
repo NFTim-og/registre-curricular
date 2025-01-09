@@ -87,5 +87,19 @@ describe('BoardComponent - Competences and Sabers', () => {
     expect(competencesSection).not.toBeNull();
     expect(competencesSection.nativeElement.textContent).toContain('Competences');
   });
+
+  it('should display sabers when Sabers button is clicked', () => {
+    const subjectButton = fixture.debugElement.query(By.css('.subject-button'));
+    subjectButton.nativeElement.click();
+    fixture.detectChanges();  
+  
+    const sabersButton = fixture.debugElement.query(By.css('.sabers-button'));
+    sabersButton.nativeElement.click();
+    fixture.detectChanges();  
+  
+    const sabersSection = fixture.debugElement.query(By.css('.sabers-section'));
+    expect(sabersSection).not.toBeNull();  
+    expect(sabersSection.nativeElement.textContent).toContain('Sabers');  
+  });
   
 });
