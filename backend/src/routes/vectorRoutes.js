@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/api/v1/vector', async (req, res) => {
   try {
     const pool = await connectToDB();
-
+    
     const result = await pool
       .request()
       .query('SELECT idVector, descripcioVector FROM VectorPlantilla');
