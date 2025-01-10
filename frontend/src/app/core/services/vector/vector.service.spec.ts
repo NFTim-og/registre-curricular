@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'; // Import HttpClientTestingModule
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { VectorService } from './vector.service';
 
 describe('VectorService', () => {
@@ -8,15 +8,15 @@ describe('VectorService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule], // Import HttpClientTestingModule here
+      imports: [HttpClientTestingModule], 
       providers: [VectorService],
     });
-    service = TestBed.inject(VectorService); // Inject the service
-    httpTestingController = TestBed.inject(HttpTestingController); // Inject HttpTestingController
+    service = TestBed.inject(VectorService); 
+    httpTestingController = TestBed.inject(HttpTestingController); 
   });
 
   afterEach(() => {
-    httpTestingController.verify(); // Ensure no outstanding requests
+    httpTestingController.verify();
   });
 
   it('should be created', () => {
@@ -24,14 +24,14 @@ describe('VectorService', () => {
   });
 
   it('should call getVectorData and return data', () => {
-    const mockResponse = { success: true, data: [] }; // Mock response data
+    const mockResponse = { success: true, data: [] };
 
     service.getVectorData().subscribe((data) => {
       expect(data).toEqual(mockResponse);
     });
 
-    const req = httpTestingController.expectOne('http://localhost:3000/api/v1/vector'); // Expect one HTTP request
-    expect(req.request.method).toBe('POST'); // Verify the request method
-    req.flush(mockResponse); // Respond with mock data
+    const req = httpTestingController.expectOne('http://localhost:3000/api/v1/vector');
+    expect(req.request.method).toBe('POST'); 
+    req.flush(mockResponse); 
   });
 });
