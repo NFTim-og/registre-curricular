@@ -86,18 +86,15 @@ describe('LoginComponent', () => {
   it('should disable the login button when fields are empty', () => {
     const fixture = TestBed.createComponent(LoginComponent);
     const component = fixture.componentInstance;
-    fixture.detectChanges();
+    console.log("user" + component.loginDetails.user);
+    console.log("password" + component.loginDetails.password);
+    //fixture.detectChanges();
 
     const button: HTMLButtonElement = fixture.nativeElement.querySelector('button[type="submit"]');
     
     // Initially empty fields
     component.loginDetails.user = '';
     component.loginDetails.password = '';
-    console.log(component.loginDetails.user);
-    console.log(component.loginDetails.password);
-    fixture.detectChanges();
-    
-    // Trigger form validation manually
     fixture.detectChanges();
     
     // Expect the button to be disabled when fields are empty

@@ -24,6 +24,10 @@ export class LoginComponent {
     private router: Router
   ) {}
 
+  submitDisabled() {
+    return !(this.loginDetails.user != '' && this.loginDetails.password != '');
+  }
+  
   onSubmit(): void {
     if (!this.loginDetails.user || !this.loginDetails.password) {
       this.loginError = 'Please fill in all the fields.';
