@@ -11,6 +11,6 @@ export class VectorService {
   constructor(private http: HttpClient) {}
 
   getVectorData(): Observable<any> {
-    return this.http.post<any>(this.apiUrl, {});
+    return this.http.get<any>(this.apiUrl, {});
   }
 }

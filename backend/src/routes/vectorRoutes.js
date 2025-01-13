@@ -3,8 +3,8 @@ const { connectToDB, mssql } = require('../config/dbConfig');
 
 const router = express.Router();
 
-router.post('/api/v1/vector', async (req, res) => {
-  const { idCurs } = req.body; 
+router.get('/api/v1/vector', async (req, res) => {
+  const idCurs = "DA085A3D-78AD-47FA-B90F-30202AD7BD6C"; 
 
   if (!idCurs) {
     return res.status(400).json({ success: false, message: 'idCurs is required' });
