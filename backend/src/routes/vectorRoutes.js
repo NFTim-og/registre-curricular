@@ -9,8 +9,10 @@ router.post('/api/v1/vector', async (req, res) => {
     
     const result = await pool
       .request()
-      .query('SELECT idVector, descripcioVector FROM VectorPlantilla');
-
+      .query('SELECT idVectorPlantilla, descripcioVector FROM VectorPlantilla ');
+    
+    console.log('VectorPlantilla retrieved successfully');
+    console.log(result);
     res.status(200).json({ success: true, data: result.recordset });
   } catch (err) {
     console.error('Error querying VectorPlantilla:', err);
