@@ -12,8 +12,7 @@
     <button class="competences-button" (click)="showCompetences()">Competences</button>
     <button class="sabers-button" (click)="showSabers()">Sabers</button>
 </div>
-  
-  
+
 <div *ngIf="showCompetencesSection" class="competences-section">
   <h4>Competences</h4>
   <ul>
@@ -36,13 +35,13 @@
 <div *ngIf="showSabersSection" class="sabers-section">
   <h4>Sabers</h4>
   <ul>
-    <li *ngFor="let saber of sabersData" class="saber-item">
+    <li *ngFor="let saber of sabersData" class="sabers-item">
       {{ saber.id }} - {{ saber.saber }}
-      <ul class="sub-sabers-list">
-        <li *ngFor="let subSaber of saber.sabers" class="sub-saber-item">
-          {{ subSaber.id }} - {{ subSaber.description }}
+      <ul class="sabers-list">
+        <li *ngFor="let sabers of saber.sabers" class="saber-item">
+          {{ sabers.id }} - {{ sabers.description }}
           <ul class="indicateurs-list">
-            <li *ngFor="let indicateur of subSaber.indicateurs" class="indicateur-item">
+            <li *ngFor="let indicateur of sabers.indicateurs" class="indicateur-item">
               {{ indicateur }}
             </li>
           </ul>
