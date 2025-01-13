@@ -184,6 +184,78 @@ export class BoardComponent implements OnInit{
     }
   ];
 
+  "sabers": [
+      {
+        "id": 1,
+        "saber": "Les llengües i els seus parlants",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 1.1,
+            "description": "Presa de consciència de la diversitat lingüística...",
+            "indicateurs": ["Biografia lingüística personal"]
+          },
+          {
+            "id": 1.2,
+            "description": "Identificació de prejudicis i estereotips lingüístics...",
+            "indicateurs": ["Cerca de solucions"]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "saber": "Comunicació oral",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 2.1,
+            "description": "Interès per expressar-se oralment...",
+            "indicateurs": ["Pronunciació adequada en les situacions d’aula"]
+          },
+          {
+            "id": 2.2,
+            "description": "Comprensió de textos orals de tipologia diversa...",
+            "indicateurs": ["Comprensió de textos orals"]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "saber": "Comprensió lectora",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 3.1,
+            "description": "Lectura individual i silenciosa...",
+            "indicateurs": ["Fluïdesa en la lectura"]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "saber": "Expressió escrita",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 4.1,
+            "description": "Comprensió i ús de convencions del codi escrit...",
+            "indicateurs": ["Producció de textos escrits"]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "saber": "Alfabetització informacional",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 5.1,
+            "description": "Aplicació d'estratègies bàsiques per la recerca guiada...",
+            "indicateurs": ["Recerca d'informació en fonts digitals"]
+          }
+        ]
+      }
+    ]
   
   selectedSubject: string | null = null;
   competencesData: Competence[] = [];

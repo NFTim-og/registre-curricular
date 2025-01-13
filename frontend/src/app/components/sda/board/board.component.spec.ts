@@ -121,9 +121,84 @@ describe('BoardComponent - Competences and Sabers', () => {
       }
     ];
 
+    component.sabersData = [
+      {
+        "id": 1,
+        "saber": "Les llengües i els seus parlants",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 1.1,
+            "description": "Presa de consciència de la diversitat lingüística...",
+            "indicateurs": ["Biografia lingüística personal"]
+          },
+          {
+            "id": 1.2,
+            "description": "Identificació de prejudicis i estereotips lingüístics...",
+            "indicateurs": ["Cerca de solucions"]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "saber": "Comunicació oral",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 2.1,
+            "description": "Interès per expressar-se oralment...",
+            "indicateurs": ["Pronunciació adequada en les situacions d’aula"]
+          },
+          {
+            "id": 2.2,
+            "description": "Comprensió de textos orals de tipologia diversa...",
+            "indicateurs": ["Comprensió de textos orals"]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "saber": "Comprensió lectora",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 3.1,
+            "description": "Lectura individual i silenciosa...",
+            "indicateurs": ["Fluïdesa en la lectura"]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "saber": "Expressió escrita",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 4.1,
+            "description": "Comprensió i ús de convencions del codi escrit...",
+            "indicateurs": ["Producció de textos escrits"]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "saber": "Alfabetització informacional",
+        "subject": "Llengua Catalana",
+        "sabers": [
+          {
+            "id": 5.1,
+            "description": "Aplicació d'estratègies bàsiques per la recerca guiada...",
+            "indicateurs": ["Recerca d'informació en fonts digitals"]
+          }
+        ]
+      }
+    ]
+    
     fixture.detectChanges();
   });
 
+  
+  
   it('should toggle options for a clicked subject', () => {
     const subjectButton = fixture.debugElement.query(By.css('.subject-button'));
     subjectButton.nativeElement.click(); 
@@ -228,10 +303,31 @@ describe('BoardComponent - Competences and Sabers', () => {
     const indicateurItems = fixture.debugElement.queryAll(By.css('.indicateur-item'));
     expect(indicateurItems.length).toBeGreaterThan(0);
     
-    // Verificar el contenido del primer criteri e indicateur
     expect(criteriItems[0].nativeElement.textContent)
       .toContain("1.1 - Identificar les diferents llengües de l'entorn...");
     expect(indicateurItems[0].nativeElement.textContent)
       .toContain("Descripció d'algunes expressions d'ús quotidià");
+  });
+
+  it('should display each saber with its number and title', () => {
+    component.selectedSubject = 'Llengua Catalana';
+    component.showSabersSection = true;  
+    component.sabersData = component.sabers;  
+    fixture.detectChanges();
+  
+    const saberItems = fixture.debugElement.queryAll(By.css('.saber-item'));
+    expect(saberItems.length).toBe(5);  
+  
+    const expectedSabers = [
+      '1 - Les llengües i els seus parlants',
+      '2 - Comunicació oral',
+      '3 - Comprensió lectora',
+      '4 - Expressió escrita',
+      '5 - Alfabetització informacional'
+    ];
+  
+    saberItems.forEach((item, index) => {
+      expect(item.nativeElement.textContent.trim()).toContain(expectedSabers[index]);
+    });
   });
 });
