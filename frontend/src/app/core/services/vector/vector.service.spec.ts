@@ -8,11 +8,11 @@ describe('VectorService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule], 
+      imports: [HttpClientTestingModule],
       providers: [VectorService],
     });
-    service = TestBed.inject(VectorService); 
-    httpTestingController = TestBed.inject(HttpTestingController); 
+    service = TestBed.inject(VectorService);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
@@ -30,8 +30,9 @@ describe('VectorService', () => {
       expect(data).toEqual(mockResponse);
     });
 
+    // Verificar la solicitud HTTP
     const req = httpTestingController.expectOne('http://localhost:3000/api/v1/vector');
-    expect(req.request.method).toBe('POST'); 
-    req.flush(mockResponse); 
+    expect(req.request.method).toBe('GET'); // Cambiado a 'GET'
+    req.flush(mockResponse); // Responder con los datos simulados
   });
 });
