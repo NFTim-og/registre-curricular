@@ -184,7 +184,7 @@ export class BoardComponent implements OnInit{
     }
   ];
 
-  "sabers": [
+  sabers = [
       {
         "id": 1,
         "saber": "Les llengües i els seus parlants",
@@ -255,7 +255,7 @@ export class BoardComponent implements OnInit{
           }
         ]
       }
-    ]
+    ];
   
   selectedSubject: string | null = null;
   competencesData: Competence[] = [];

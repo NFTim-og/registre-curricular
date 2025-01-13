@@ -37,7 +37,17 @@
   <h4>Sabers</h4>
   <ul>
     <li *ngFor="let saber of sabersData" class="saber-item">
-      {{ saber.saber }}
+      {{ saber.id }} - {{ saber.saber }}
+      <ul class="sub-sabers-list">
+        <li *ngFor="let subSaber of saber.sabers" class="sub-saber-item">
+          {{ subSaber.id }} - {{ subSaber.description }}
+          <ul class="indicateurs-list">
+            <li *ngFor="let indicateur of subSaber.indicateurs" class="indicateur-item">
+              {{ indicateur }}
+            </li>
+          </ul>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>
