@@ -320,4 +320,31 @@ describe('BoardComponent - Competences and Sabers', () => {
     expect(indicateurItems[0].nativeElement.textContent)
       .toContain("Biografia lingüística personal");
   });
+
+  it('should activate competence checkboxes only if a specific competence checkbox is selected', () => {
+    component.selectedSubject = 'Llengua Catalana';
+    component.showCompetencesSection = true;
+    component.competencesData = component.competences;
+    fixture.detectChanges();
+  
+    const competenceCheckboxes = fixture.debugElement.queryAll(By.css('.competence-checkbox'));
+    competenceCheckboxes.forEach(checkbox => {
+      expect(checkbox.nativeElement.checked).toBeFalse();
+    });
+  
+    const specificCompetenceCheckbox = fixture.debugElement.query(By.css('.specific-competence-checkbox'));
+    specificCompetenceCheckbox.nativeElement.click();
+    fixture.detectChanges();
+  
+    competenceCheckboxes.forEach(checkbox => {
+      expect(checkbox.nativeElement.disabled).toBeFalse();
+    });
+  
+    specificCompetenceCheckbox.nativeElement.click();
+    fixture.detectChanges();
+  
+    competenceCheckboxes.forEach(checkbox => {
+      expect(checkbox.nativeElement.disabled).toBeTrue();
+    });
+  });
 });
