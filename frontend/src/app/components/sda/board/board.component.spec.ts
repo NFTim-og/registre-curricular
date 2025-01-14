@@ -321,30 +321,33 @@ describe('BoardComponent - Competences and Sabers', () => {
       .toContain("Biografia lingüística personal");
   });
 
-  it('should activate competence checkboxes only if a specific competence checkbox is selected', () => {
-    component.selectedSubject = 'Llengua Catalana';
-    component.showCompetencesSection = true;
-    component.competencesData = component.competences;
-    fixture.detectChanges();
+  it('should correctly enable and disable competence checkboxes based on specific competence selections', () => {
+    component.selectedSubject = 'Llengua Catalana';  
+    component.showCompetencesSection = true;  
+    fixture.detectChanges();  
   
     const competenceCheckboxes = fixture.debugElement.queryAll(By.css('.competence-checkbox'));
+    const specificCompetenceCheckboxes = fixture.debugElement.queryAll(By.css('.specific-competence-checkbox'));
+  
     competenceCheckboxes.forEach(checkbox => {
-      expect(checkbox.nativeElement.checked).toBeFalse();
+      expect(checkbox.nativeElement.disabled).toBeTrue();  
     });
   
-    const specificCompetenceCheckbox = fixture.debugElement.query(By.css('.specific-competence-checkbox'));
-    specificCompetenceCheckbox.nativeElement.click();
-    fixture.detectChanges();
+    specificCompetenceCheckboxes[0].nativeElement.click();
+    fixture.detectChanges();  
   
     competenceCheckboxes.forEach(checkbox => {
-      expect(checkbox.nativeElement.disabled).toBeFalse();
+      expect(checkbox.nativeElement.disabled).toBeFalse();  
     });
   
-    specificCompetenceCheckbox.nativeElement.click();
-    fixture.detectChanges();
+    specificCompetenceCheckboxes.forEach(checkbox => {
+      checkbox.nativeElement.click();
+    });
+    fixture.detectChanges();  
   
     competenceCheckboxes.forEach(checkbox => {
-      expect(checkbox.nativeElement.disabled).toBeTrue();
+      expect(checkbox.nativeElement.disabled).toBeTrue();  
     });
   });
+  
 });

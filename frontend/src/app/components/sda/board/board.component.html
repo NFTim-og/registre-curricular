@@ -17,10 +17,11 @@
   <h4>Competences</h4>
   <ul>
     <li *ngFor="let competence of competencesData" class="competence-item">
-      {{ competence.id }} - {{ competence.competencia }}
+        {{ competence.id }} - {{ competence.competencia }}
       <ul class="criteris-list">
         <li *ngFor="let criteri of competence.criteris" class="criteri-item">
           {{ criteri.id }} - {{ criteri.description }}
+          
           <ul class="indicateurs-list">
             <li *ngFor="let indicateur of criteri.indicateurs" class="indicateur-item">
               {{ indicateur }}
@@ -31,7 +32,6 @@
     </li>
   </ul>
 </div>
-
 <div *ngIf="showSabersSection" class="sabers-section">
   <h4>Sabers</h4>
   <ul>

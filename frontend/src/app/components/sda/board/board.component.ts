@@ -273,6 +273,7 @@ export class BoardComponent implements OnInit{
     this.resetData();
   }
 
+
   showCompetences(): void {
     if (this.showCompetencesSection) {
       this.showCompetencesSection = false;
@@ -289,8 +290,6 @@ export class BoardComponent implements OnInit{
       }
     }
   }
-  
-  
 
   showSabers(): void {
     if (this.showSabersSection) {
