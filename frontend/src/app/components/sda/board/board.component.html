@@ -14,36 +14,45 @@
     <button class="sabers-button" (click)="showSabers()">Sabers</button>
 </div>
 
-<div *ngIf="showCompetencesSection" class="competences-section">
-  <h4>Competences</h4>
-  <ul>
-    <li *ngFor="let competence of competencesData; let i = index" class="competence-item">
-      <label >
-        
-        <input 
-          type="checkbox" 
-          class="specific-competence-checkbox"
-          [disabled]="true"> 
-        {{ competence.id }} - {{ competence.competencia }}
-      </label>
+<div *ngFor="let competence of competencesData">
+  <div class="form-check">
+    <!-- Case de la compétence désactivée, mais sélectionnable via le texte -->
+    <input
+      type="checkbox"
+      id="competence-{{competence.id}}"
+      class="form-check-input"
+      [checked]="competence.selected"
+      [disabled]="true" 
+    />
+    <label
+      class="form-check-label"
+      (click)="toggleCompetence(competence.id)"  
+    >
+      {{ competence.competencia }}
+    </label>
+  </div>
 
-      <ul class="criteris-list">
-        <li *ngFor="let criteri of competence.criteris; let j = index" class="criteri-item">
-          <label (click)="test(i)">
-            <input 
-              type="checkbox" 
-              class="criteri-checkbox"
-             >
-
-              <span>{{ criteri.id }} - {{ criteri.description }}</span>
-          </label>
-        </li>
-      </ul>
+  <ul *ngIf="areCriterisVisible(competence)" class="criteris-list">
+    <li *ngFor="let criteri of competence.criteris">
+      <div class="form-check" *ngIf="isCriteriVisible(criteri)">
+        <input
+          type="checkbox"
+          id="criteri-{{competence.id}}-{{criteri.id}}"
+          class="form-check-input"
+          [(ngModel)]="criteri.selected"
+          [disabled]="false" 
+          (change)="onCriteriSelectionChange(competence.id, criteri.id)"
+        />
+        <label class="form-check-label" for="criteri-{{competence.id}}-{{criteri.id}}">
+          {{ criteri.id }} - {{ criteri.description }}
+        </label>
+      </div>
     </li>
   </ul>
 </div>
 
-<div *ngIf="showSabersSection" class="sabers-section">
+
+<!-- <div *ngIf="showSabersSection" class="sabers-section">
   <h4>Sabers</h4>
   <ul>
     <li *ngFor="let saber of sabersData" class="sabers-item">
@@ -51,13 +60,9 @@
       <ul class="sabers-list">
         <li *ngFor="let sabers of saber.sabers" class="saber-item">
           {{ sabers.id }} - {{ sabers.description }}
-          <ul class="indicateurs-list">
-            <li *ngFor="let indicateur of sabers.indicateurs" class="indicateur-item">
-              {{ indicateur }}
-            </li>
-          </ul>
+          
         </li>
       </ul>
     </li>
   </ul>
-</div>
+</div> -->

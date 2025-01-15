@@ -1,15 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import mockData from '../../../../assets/mockData.json';
+import { FormsModule } from '@angular/forms';
 
 interface Competence {
   id: number;
   competencia: string;
   subject: string;
+  selected?: boolean;
   criteris: {
     id: number;
     description: string;
     indicateurs: string[];
+    selected?: boolean;
+    show?: boolean;
   }[];
 }
 
@@ -17,10 +21,12 @@ interface Saber {
   id: number;
   saber: string;
   subject: string;
+  selected?: boolean;
   sabers: {
     id: number;
     description: string;
     indicateurs: string[];
+    selected?: boolean;
   }[];
 }
 
@@ -28,18 +34,12 @@ interface Saber {
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './board.component.html',
   styleUrl: './board.component.css'
 })
 export class BoardComponent implements OnInit{
-  test(index:number){console.log(index);
-   // this.competencesSelectionState[index] = true;
-   // this.competencesSpecifiquesSelected[index] = !this.competencesSpecifiquesSelected[index];
-     console.log(index);
-    this.competencesSpecifiquesSelected[index] = true;
-    this.updateCompetenceSelectionState(index);
-  }
+  
 
   subjects: string[] = [
     'Llengua Catalana', 'Llengua Estrangera', 'Matemàtiques', 'Coneixement del medi natural, social i cultural', 'Educació Artística','Educació Física', 'Educació en valors cívics i ètics', 'Competència ciutadana (CC)', 'Competència emprenedora (CE)', 'Competència digital (CD)',
@@ -275,44 +275,24 @@ export class BoardComponent implements OnInit{
   competencesSpecifiquesSelected: boolean[] = []; 
   competencesSelectionState: boolean[] = [];
 
+  selectedCriteria: { [competenceId: number]: { [criteriId: string]: boolean } } = {};
+  competencesEnabled: { [competenceId: number]: boolean } = {};
+  selectedCompetences: { [key: number]: boolean } = {};
+
   ngOnInit(): void {
     this.competencesData = mockData.competences;
     this.sabersData = mockData.sabers;
     this.resetCompetenceSelections();
   }
 
-  toggleSpecificCompetenceSelection(competenceIndex: number, criteriIndex: number): void {
-    const index = criteriIndex + competenceIndex * this.competencesData[competenceIndex].criteris.length
-    console.log(index);
-    this.competencesSpecifiquesSelected[index] = !this.competencesSpecifiquesSelected[criteriIndex + competenceIndex * this.competencesData[competenceIndex].criteris.length];
-    this.updateCompetenceSelectionState(competenceIndex);
-  }
   
-  updateCompetenceSelectionState(competenceIndex: number): void {
-    const competence = this.competencesData[competenceIndex];
-    const isAllCriteriaSelected = competence.criteris.every((criteri, index) => 
-      this.competencesSpecifiquesSelected[index + competenceIndex * competence.criteris.length]
-    );
-    
-    if (isAllCriteriaSelected) {
-      this.competencesSelectionState[competenceIndex] = true;
-    } else {
-      const isAnyCriteriaSelected = competence.criteris.some((criteri, index) => 
-        this.competencesSpecifiquesSelected[index + competenceIndex * competence.criteris.length]
-      );
-      
-      this.competencesSelectionState[competenceIndex] = isAnyCriteriaSelected;
-    }
-  }
   resetCompetenceSelections(): void {
-    this.competencesSpecifiquesSelected = [];
-    this.competencesSelectionState = [];
-  
-    this.competencesData.forEach((competence, competenceIndex) => {
-      competence.criteris.forEach(() => {
-        this.competencesSpecifiquesSelected.push(false);
+    this.competencesData.forEach((competence) => {
+      this.selectedCriteria[competence.id] = {};
+      competence.criteris.forEach((criteri) => {
+        this.selectedCriteria[competence.id][criteri.id.toString()] = false;
+        criteri.show = false; 
       });
-      this.competencesSelectionState.push(false);
     });
   }
 
@@ -321,6 +301,24 @@ export class BoardComponent implements OnInit{
     this.resetData();
   }
 
+  onCompetenceSelectionChange(competenceId: number): void {
+    const competence = this.competencesData.find(c => c.id === competenceId);
+    if (!competence) return;
+  
+    
+    competence.criteris.forEach(criteri => {
+      criteri.selected = competence.selected;
+    });
+  }
+  
+  onCriteriSelectionChange(competenceId: number, criteriId: number): void {
+    this.selectedCriteria[competenceId][criteriId.toString()] = !this.selectedCriteria[competenceId][criteriId.toString()];
+
+    const competence = this.competencesData.find(c => c.id === competenceId);
+    if (competence) {
+      competence.selected = competence.criteris.some(criteri => this.selectedCriteria[competenceId][criteri.id.toString()]);
+    }
+  }
 
   showCompetences(): void {
     if (this.showCompetencesSection) {
@@ -359,5 +357,31 @@ export class BoardComponent implements OnInit{
   private resetData(): void {
     this.competencesData = [];
     this.sabersData = [];
+  }
+
+  isCompetenceEnabled(competenceId: number): boolean {
+    const competence = this.competencesData.find(c => c.id === competenceId);
+    if (!competence) return false;
+    
+    return competence.criteris.every(criteri => 
+      this.selectedCriteria[competenceId]?.[criteri.id.toString()] === true
+    );
+  }
+
+  toggleCompetence(competenceId: number): void {
+    const competence = this.competencesData.find(c => c.id === competenceId);
+    if (competence) {
+      competence.criteris.forEach(criteri => {
+        criteri.show = !criteri.show; 
+      });
+    }
+  }
+
+  areCriterisVisible(competence: Competence): boolean {
+    return competence.criteris.some(c => c.show);
+  }
+
+  isCriteriVisible(criteri: any): boolean {
+    return criteri.show;
   }
 }
