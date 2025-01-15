@@ -1,22 +1,41 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { VectorService } from '../../../core/services/vector/vector.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sda-vectors',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './sda-vectors.component.html',
-  styleUrl: './sda-vectors.component.css'
+  styleUrls: ['./sda-vectors.component.css'],
 })
 export class SdaVectorsComponent {
-  vectors = [
-    { name: 'Aprenentatges competencials', mark: false },
-    { name: 'Perspectiva de gènere', mark: false },
-    { name: "Qualitat de l'educació de les llengües", mark: false },
-    { name: 'Benestar emocional', mark: false },
-    { name: 'Universalitat del currículum', mark: false },
-    { name: 'Ciutadania democràtica i consciència global', mark: false },
-  ];
+  vectors: { idVectorPlantilla: string; descripcioVector: string; mark: boolean }[] = [];
+  errorMessage = '';
+
+  constructor(private vectorService: VectorService) {}
+
+  ngOnInit() {
+    this.loadVectors();
+  }
+
+  loadVectors() {
+    this.vectorService.getVectorData().subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.vectors = response.data.map((vector: any) => ({
+            ...vector,
+            mark: false,
+          }));
+        } else {
+          this.errorMessage = 'Failed to load vectors.';
+        }
+      },
+      error: () => {
+        this.errorMessage = 'An error occurred while fetching vectors.';
+      },
+    });
+  }
 
   updateVector(index: number, event: Event) {
     const checkbox = event.target as HTMLInputElement;
@@ -24,11 +43,17 @@ export class SdaVectorsComponent {
   }
 
   completePercentage(): number {
-    const marcats = this.vectors.filter((vector) => vector.mark).length;
-    return Math.round((marcats / this.vectors.length) * 100);
+    const totalVectors = this.vectors.length;
+    if (totalVectors === 0) {
+      return 0;
+    }
+    const markedCount = this.vectors.filter((vector) => vector.mark).length;
+    return Math.round((markedCount / totalVectors) * 100);
   }
 
   markedVectors(): number {
     return this.vectors.filter((vector) => vector.mark).length;
   }
 }
+
+

@@ -6,11 +6,12 @@ import { UserService } from './core/services/user/user.service';
 import { SdaBasicInfoComponent } from './components/sda/sda-basic-info/sda-basic-info.component';
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
 import { NgIf } from '@angular/common';
+import { SdaVectorsComponent } from './components/sda/sda-vectors/sda-vectors.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SdaBasicInfoComponent, SideNavigationBarComponent, LoginComponent, TopNavigationComponent, NgIf],
+  imports: [RouterOutlet, SdaBasicInfoComponent, SideNavigationBarComponent, LoginComponent, TopNavigationComponent, NgIf, SdaVectorsComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

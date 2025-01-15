@@ -1,0 +1,53 @@
+/* Contenidor principal */
+.vectors-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  /* Títol i percentatge */
+  .vectors-container h3 {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Barra de progrés: fons */
+  .progress-bar {
+    width: 20%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+  /* Barra de progrés: part completada */
+  .progress {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  /* Llista d'elements */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  ul li label {
+    margin-left: 5px;
+  }
+  
+  /* Missatge d'error */
+  .error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
