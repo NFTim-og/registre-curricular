@@ -2,6 +2,8 @@
     display: table;
     width: 100%;
     border-collapse: collapse;
+    margin-left: 220px;
+    font-family: Arial, sans-serif;
   }
   
   .sda-row {
