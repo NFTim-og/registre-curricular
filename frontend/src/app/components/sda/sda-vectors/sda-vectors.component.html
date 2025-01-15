@@ -11,10 +11,11 @@
     <li *ngFor="let vector of vectors; let i = index">
       <input
         type="checkbox"
+        id="checkbox-{{ i }}"
         [checked]="vector.mark"
         (change)="updateVector(i, $event)"
       />
-      <label>{{ vector.descripcioVector }}</label>
+      <label for="checkbox-{{ i }}">{{ vector.descripcioVector }}</label>
     </li>
   </ul>
   <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
