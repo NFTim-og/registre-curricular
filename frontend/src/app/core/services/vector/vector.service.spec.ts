@@ -30,9 +30,8 @@ describe('VectorService', () => {
       expect(data).toEqual(mockResponse);
     });
 
-    // Verificar la solicitud HTTP
     const req = httpTestingController.expectOne('http://localhost:3000/api/v1/vector');
-    expect(req.request.method).toBe('GET'); // Cambiado a 'GET'
-    req.flush(mockResponse); // Responder con los datos simulados
+    expect(req.request.method).toBe('GET');
+    req.flush(mockResponse);
   });
 });
