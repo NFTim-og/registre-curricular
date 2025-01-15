@@ -24,6 +24,7 @@ interface Saber {
   }[];
 }
 
+
 @Component({
   selector: 'app-board',
   standalone: true,
@@ -32,6 +33,14 @@ interface Saber {
   styleUrl: './board.component.css'
 })
 export class BoardComponent implements OnInit{
+  test(index:number){console.log(index);
+   // this.competencesSelectionState[index] = true;
+   // this.competencesSpecifiquesSelected[index] = !this.competencesSpecifiquesSelected[index];
+     console.log(index);
+    this.competencesSpecifiquesSelected[index] = true;
+    this.updateCompetenceSelectionState(index);
+  }
+
   subjects: string[] = [
     'Llengua Catalana', 'Llengua Estrangera', 'Matemàtiques', 'Coneixement del medi natural, social i cultural', 'Educació Artística','Educació Física', 'Educació en valors cívics i ètics', 'Competència ciutadana (CC)', 'Competència emprenedora (CE)', 'Competència digital (CD)',
   ];
@@ -263,9 +272,48 @@ export class BoardComponent implements OnInit{
   sabersData: Saber[] = [];  
   showSabersSection = false;
 
+  competencesSpecifiquesSelected: boolean[] = []; 
+  competencesSelectionState: boolean[] = [];
+
   ngOnInit(): void {
     this.competencesData = mockData.competences;
     this.sabersData = mockData.sabers;
+    this.resetCompetenceSelections();
+  }
+
+  toggleSpecificCompetenceSelection(competenceIndex: number, criteriIndex: number): void {
+    const index = criteriIndex + competenceIndex * this.competencesData[competenceIndex].criteris.length
+    console.log(index);
+    this.competencesSpecifiquesSelected[index] = !this.competencesSpecifiquesSelected[criteriIndex + competenceIndex * this.competencesData[competenceIndex].criteris.length];
+    this.updateCompetenceSelectionState(competenceIndex);
+  }
+  
+  updateCompetenceSelectionState(competenceIndex: number): void {
+    const competence = this.competencesData[competenceIndex];
+    const isAllCriteriaSelected = competence.criteris.every((criteri, index) => 
+      this.competencesSpecifiquesSelected[index + competenceIndex * competence.criteris.length]
+    );
+    
+    if (isAllCriteriaSelected) {
+      this.competencesSelectionState[competenceIndex] = true;
+    } else {
+      const isAnyCriteriaSelected = competence.criteris.some((criteri, index) => 
+        this.competencesSpecifiquesSelected[index + competenceIndex * competence.criteris.length]
+      );
+      
+      this.competencesSelectionState[competenceIndex] = isAnyCriteriaSelected;
+    }
+  }
+  resetCompetenceSelections(): void {
+    this.competencesSpecifiquesSelected = [];
+    this.competencesSelectionState = [];
+  
+    this.competencesData.forEach((competence, competenceIndex) => {
+      competence.criteris.forEach(() => {
+        this.competencesSpecifiquesSelected.push(false);
+      });
+      this.competencesSelectionState.push(false);
+    });
   }
 
   toggleSubject(subject: string): void {

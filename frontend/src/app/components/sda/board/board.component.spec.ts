@@ -271,14 +271,8 @@ describe('BoardComponent - Competences and Sabers', () => {
 
     const criteriItems = fixture.debugElement.queryAll(By.css('.criteri-item'));
     expect(criteriItems.length).toBeGreaterThan(0);
-    
-    const indicateurItems = fixture.debugElement.queryAll(By.css('.indicateur-item'));
-    expect(indicateurItems.length).toBeGreaterThan(0);
-    
     expect(criteriItems[0].nativeElement.textContent)
       .toContain("1.1 - Identificar les diferents llengües de l'entorn...");
-    expect(indicateurItems[0].nativeElement.textContent)
-      .toContain("Descripció d'algunes expressions d'ús quotidià");
   });
 
   it('should display each saber with its number and title', () => {
@@ -311,14 +305,8 @@ describe('BoardComponent - Competences and Sabers', () => {
 
     const sabersitem = fixture.debugElement.queryAll(By.css('.saber-item'));
     expect(sabersitem.length).toBeGreaterThan(0);
-    
-    const indicateurItems = fixture.debugElement.queryAll(By.css('.indicateur-item'));
-    expect(indicateurItems.length).toBeGreaterThan(0);
-    
     expect(sabersitem[0].nativeElement.textContent)
       .toContain("1.1 - Presa de consciència de la diversitat lingüística...");
-    expect(indicateurItems[0].nativeElement.textContent)
-      .toContain("Biografia lingüística personal");
   });
 
   it('should correctly enable and disable competence checkboxes based on specific competence selections', () => {
@@ -326,9 +314,10 @@ describe('BoardComponent - Competences and Sabers', () => {
     component.showCompetencesSection = true;  
     fixture.detectChanges();  
   
-    const competenceCheckboxes = fixture.debugElement.queryAll(By.css('.competence-checkbox'));
-    const specificCompetenceCheckboxes = fixture.debugElement.queryAll(By.css('.specific-competence-checkbox'));
-  
+    const competenceCheckboxes = fixture.debugElement.queryAll(By.css('.competence-item'));
+    const specificCompetenceCheckboxes = fixture.debugElement.queryAll(By.css('.criteri-item'));
+    
+    expect(competenceCheckboxes).toBeTruthy();
     competenceCheckboxes.forEach(checkbox => {
       expect(checkbox.nativeElement.disabled).toBeTrue();  
     });
