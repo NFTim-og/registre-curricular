@@ -7,11 +7,20 @@ import { SdaBasicInfoComponent } from './components/sda/sda-basic-info/sda-basic
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
 import { NgIf } from '@angular/common';
 import { SdaVectorsComponent } from './components/sda/sda-vectors/sda-vectors.component';
+import { ConfigurationMenuComponent } from './components/configuration-menu/configuration-menu.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SdaBasicInfoComponent, SideNavigationBarComponent, LoginComponent, TopNavigationComponent, NgIf, SdaVectorsComponent],
+  imports: [
+    SdaBasicInfoComponent, 
+    SideNavigationBarComponent, 
+    LoginComponent, 
+    TopNavigationComponent, 
+    NgIf, 
+    SdaVectorsComponent,
+    ConfigurationMenuComponent
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -22,5 +31,15 @@ export class AppComponent {
 
   isLoggedIn(): boolean {
     return this.userService.isLoggedIn(); 
+  }
+
+  showConfiguracio = false;
+
+  handleNavSelection(navItem: string): void {
+    if (navItem === 'configuration') {
+      this.showConfiguracio = true;
+    } else {
+      this.showConfiguracio = false;
+    }
   }
 }

@@ -1,8 +1,13 @@
 <div *ngIf="isLoggedIn(); else loginTemplate">
   <app-top-navigation></app-top-navigation>
-  <app-side-navigation-bar></app-side-navigation-bar>
-  <app-sda-basic-info></app-sda-basic-info>
-  <app-sda-vectors></app-sda-vectors>
+  <app-side-navigation-bar (navItemSelected)="handleNavSelection($event)"></app-side-navigation-bar>
+
+  <app-configuration-menu *ngIf="showConfiguracio"></app-configuration-menu>
+
+  <ng-container *ngIf="!showConfiguracio">
+    <app-sda-basic-info></app-sda-basic-info>
+    <app-sda-vectors></app-sda-vectors>
+  </ng-container>
 </div>
 <ng-template #loginTemplate>
   <app-login></app-login>

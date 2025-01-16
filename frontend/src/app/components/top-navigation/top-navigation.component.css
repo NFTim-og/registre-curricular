@@ -9,6 +9,12 @@
   border-color: #000000;
 }
 
+:host-context(.dark-mode) .top-navigation-bar {
+  background: rgb(52, 73, 94);
+  color: #ecf0f1;
+  border-color: #34495e;
+}
+
 .right-section {
   display: flex;
   align-items: center;
@@ -18,21 +24,49 @@
 
 .username-section span {
   font-size: 1.2em;
-  margin: 5px;
+  margin: 0 10px;
 }
 
 .logout-section button {
   background-color: #ffffff;
   color: #000000;
-  border: none;
+  border: 1px solid #cccccc;
   padding: 10px 15px;
   cursor: pointer;
   font-size: 1em;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logout-section button:hover {
-  background-color: #e7e7e7;
+  background-color: #dcdcdc;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+:host-context(.dark-mode) .logout-section button {
+  background-color: rgb(52, 73, 94);
+  color: #ecf0f1;
+  border: 1px solid #3b3b3b;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(.dark-mode) .logout-section button:hover {
+  background-color: #3b5998;
+}
+
+@media (max-width: 768px) {
+  .top-navigation-bar {
+    padding-left: 15px;
+    justify-content: space-between;
+  }
+
+  .username-section span {
+    font-size: 1em;
+  }
+
+  .logout-section button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
 }

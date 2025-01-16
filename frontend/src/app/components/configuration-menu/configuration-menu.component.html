@@ -1,0 +1,26 @@
+<div class="configuration-menu">
+  <h2>Configuració</h2>
+  <div class="theme-toggle">
+    <label>
+      <input
+        type="checkbox"
+        [checked]="isDarkMode"
+        (change)="toggleTheme()"
+      />
+      <span></span>
+    </label>
+    <span>{{ isDarkMode ? 'Mode Fosc' : 'Mode Clar' }}</span>
+  </div>
+
+  <div class="language-selector">
+    <label for="language">Idioma:</label>
+    <select
+      id="language"
+      [(ngModel)]="selectedLanguage"
+      (change)="changeLanguage()"
+    >
+      <option value="ca">Català</option>
+      <option value="es">Castellano</option>
+    </select>
+  </div>
+</div>

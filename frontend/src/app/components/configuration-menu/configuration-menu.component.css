@@ -1,0 +1,79 @@
+.configuration-menu {
+  padding: 20px;
+  margin-left: 220px;
+  font-family: Arial, sans-serif;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.theme-toggle label {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.theme-toggle label input {
+  display: none;
+}
+
+.theme-toggle label span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle label::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle label input:checked + span {
+  transform: translateX(25px);
+  background-color: #000000;
+}
+
+.theme-toggle label input:checked::before {
+  background-color: #2c3e50;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.language-selector label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.language-selector select {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.language-selector select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
