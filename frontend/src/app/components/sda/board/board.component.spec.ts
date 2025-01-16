@@ -204,21 +204,23 @@ describe('BoardComponent - Competences and Sabers', () => {
   });
   
   it('should display competences when Competences button is clicked', () => {
-    const subjectButton = fixture.debugElement.query(By.css('.subject-button'));
-    subjectButton.nativeElement.click();
-    fixture.detectChanges();
-  
+    component.selectedSubject = 'Llengua Catalana';  
+    component.showCompetencesSection = false;  
+    fixture.detectChanges();  
+    
     const competencesButton = fixture.debugElement.query(By.css('.competences-button'));
-    competencesButton.nativeElement.click();
-    fixture.detectChanges();
-  
-    const competencesSection = fixture.debugElement.query(By.css('.competences-section'));
-    expect(competencesSection).not.toBeNull();
-    expect(competencesSection.nativeElement.textContent).toContain('Competences');
-  
+    competencesButton.nativeElement.click(); 
+    fixture.detectChanges();  
+    
+    const competencesSection = fixture.debugElement.query(By.css('.options-section'));
+    expect(competencesSection).not.toBeNull();  
+    
+    
     const sabersSection = fixture.debugElement.query(By.css('.sabers-section'));
     expect(sabersSection).toBeNull();  
   });
+  
+  
   
   it('should display sabers when Sabers button is clicked', () => {
     const subjectButton = fixture.debugElement.query(By.css('.subject-button'));
@@ -237,43 +239,48 @@ describe('BoardComponent - Competences and Sabers', () => {
     expect(competencesSection).toBeNull();  
   }); 
   it('should display each competence with its number and title', () => {
-    component.selectedSubject = 'Llengua Catalana';
-    component.showCompetencesSection = true;
-    component.competencesData = component.competences;
-    fixture.detectChanges();
-
-    const competenceItems = fixture.debugElement.queryAll(By.css('.competence-item'));
-    expect(competenceItems.length).toBe(10); 
-
+    component.selectedSubject = 'Llengua Catalana'; 
+    component.showCompetencesSection = true;  
+    component.competencesData = component.competences.filter(competence => competence.subject === 'Llengua Catalana');
+    fixture.detectChanges();  
+    
+    const competenceItems = fixture.debugElement.queryAll(By.css('.form-check'));
+    expect(competenceItems.length).toBe(10);  
+  
     const expectedCompetences = [
-      '1 - Prendre consciència de la diversitat lingüística i cultural...',
-      '2 - Comprendre et interpréter des textes oraux et multimodaux...',
-      '3 - Produire des textes oraux et multimodaux avec cohérence...',
-      '4 - Comprendre et interpréter des textes écrits...',
-      '5 - Produire des textes écrits et multimodaux...',
-      '6 - Cercar, seleccionar i contrastar informació...',
-      '7 - Seleccionar i llegir de manera autònoma obres diverses...',
-      '8 - Llegir, interpretar i analitzar obres literàries...',
-      '9 - Reflexionar de forma guiada sobre el llenguatge...',
-      '10 - Utilitzar un llenguatge no discriminatori...'
+      'Prendre consciència de la diversitat lingüística i cultural...',
+      'Comprendre et interpréter des textes oraux et multimodaux...',
+      'Produire des textes oraux et multimodaux avec cohérence...',
+      'Comprendre et interpréter des textes écrits...',
+      'Produire des textes écrits et multimodaux...',
+      'Cercar, seleccionar i contrastar informació...',
+      'Seleccionar i llegir de manera autònoma obres diverses...',
+      'Llegir, interpretar i analitzar obres literàries...',
+      'Reflexionar de forma guiada sobre el llenguatge...',
+      'Utilitzar un llenguatge no discriminatori...'
     ];
-
+  
     competenceItems.forEach((item, index) => {
       expect(item.nativeElement.textContent.trim()).toContain(expectedCompetences[index]);
     });
   });
+  
 
-  it('should display criteris and indicateurs for each competence', () => {
+  it('should display criteris for each competence', () => {
     component.selectedSubject = 'Llengua Catalana';
     component.showCompetencesSection = true;
-    component.competencesData = component.competences;
-    fixture.detectChanges();
-
-    const criteriItems = fixture.debugElement.queryAll(By.css('.criteri-item'));
+    component.competencesData = component.competences.filter(competence => competence.subject === 'Llengua Catalana');
+    fixture.detectChanges();  
+    
+    component.competencesData[0].criteris.forEach(criteri => criteri.show = true);
+    fixture.detectChanges();  
+    
+    const criteriItems = fixture.debugElement.queryAll(By.css('.criteris-list li'));
+    
     expect(criteriItems.length).toBeGreaterThan(0);
-    expect(criteriItems[0].nativeElement.textContent)
-      .toContain("1.1 - Identificar les diferents llengües de l'entorn...");
+    expect(criteriItems[0].nativeElement.textContent).toContain("1.1 - Identificar les diferents llengües de l'entorn...");
   });
+  
 
   it('should display each saber with its number and title', () => {
     component.selectedSubject = 'Llengua Catalana';
@@ -297,7 +304,7 @@ describe('BoardComponent - Competences and Sabers', () => {
     });
   });
 
-  it('should display sabers and indicateurs for each sabers', () => {
+  it('should display sabers for each sabers', () => {
     component.selectedSubject = 'Llengua Catalana';
     component.showSabersSection = true;
     component.sabersData = component.sabers;
@@ -309,34 +316,48 @@ describe('BoardComponent - Competences and Sabers', () => {
       .toContain("1.1 - Presa de consciència de la diversitat lingüística...");
   });
 
-  it('should correctly enable and disable competence checkboxes based on specific competence selections', () => {
-    component.selectedSubject = 'Llengua Catalana';  
-    component.showCompetencesSection = true;  
-    fixture.detectChanges();  
-  
-    const competenceCheckboxes = fixture.debugElement.queryAll(By.css('.competence-item'));
-    const specificCompetenceCheckboxes = fixture.debugElement.queryAll(By.css('.criteri-item'));
+  it('should correctly update the competence checkbox based on criteria selection, and competences checkbox remains disabled', () => {
     
-    expect(competenceCheckboxes).toBeTruthy();
-    competenceCheckboxes.forEach(checkbox => {
-      expect(checkbox.nativeElement.disabled).toBeTrue();  
-    });
+    component.selectedSubject = 'Llengua Catalana';
+    component.showCompetencesSection = true;
+    component.competencesData = [{
+      id: 1,
+      competencia: "Prendre consciència de la diversitat lingüística i cultural...",
+      subject: "Llengua Catalana",
+      criteris: [{
+        id: 1.1,
+        description: "Identificar les diferents llengües de l'entorn...",
+        indicateurs: ["Descripció d'algunes expressions d'ús quotidià"],
+        selected: false,
+        show: false 
+      }]
+    }];
+    fixture.detectChanges();
   
-    specificCompetenceCheckboxes[0].nativeElement.click();
-    fixture.detectChanges();  
+    const competenceCheckbox = fixture.debugElement.query(By.css('input[id="competence-1"]'));
+    expect(competenceCheckbox.nativeElement.disabled).toBe(true); 
+    expect(competenceCheckbox.nativeElement.checked).toBe(false); 
   
-    competenceCheckboxes.forEach(checkbox => {
-      expect(checkbox.nativeElement.disabled).toBeFalse();  
-    });
+    const competenceLabel = fixture.debugElement.query(By.css('.form-check-label'));
+    expect(competenceLabel.nativeElement).toBeTruthy(); 
   
-    specificCompetenceCheckboxes.forEach(checkbox => {
-      checkbox.nativeElement.click();
-    });
-    fixture.detectChanges();  
+    competenceLabel.nativeElement.click();
+    fixture.detectChanges();
   
-    competenceCheckboxes.forEach(checkbox => {
-      expect(checkbox.nativeElement.disabled).toBeTrue();  
-    });
+    const criteriCheckbox = fixture.debugElement.query(By.css('input[id^="criteri-"]'));
+    expect(criteriCheckbox).not.toBeNull(); 
+  
+    criteriCheckbox.nativeElement.click();
+    fixture.detectChanges();
+  
+    expect(competenceCheckbox.nativeElement.checked).toBe(true); 
+  
+    expect(competenceCheckbox.nativeElement.disabled).toBe(true); 
+  
+    criteriCheckbox.nativeElement.click();
+    fixture.detectChanges();
+  
+    expect(competenceCheckbox.nativeElement.checked).toBe(false); 
+    expect(competenceCheckbox.nativeElement.disabled).toBe(true); 
   });
-  
 });

@@ -16,7 +16,6 @@
 
 <div *ngFor="let competence of competencesData">
   <div class="form-check">
-    <!-- Case de la compétence désactivée, mais sélectionnable via le texte -->
     <input
       type="checkbox"
       id="competence-{{competence.id}}"
@@ -52,7 +51,7 @@
 </div>
 
 
-<!-- <div *ngIf="showSabersSection" class="sabers-section">
+<div *ngIf="showSabersSection" class="sabers-section">
   <h4>Sabers</h4>
   <ul>
     <li *ngFor="let saber of sabersData" class="sabers-item">
@@ -65,4 +64,4 @@
       </ul>
     </li>
   </ul>
-</div> -->
+</div>
